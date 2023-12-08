@@ -1,6 +1,7 @@
 "use client";
 
 import BackButton from "@/components/BackButton";
+import GenreFilter from "@/components/Filters/Genre";
 import Header from "@/components/Filters/Header";
 
 const CreateStoryPage = () => {
@@ -30,6 +31,12 @@ const CreateStoryPage = () => {
                 </svg>
               </div>
               <Header genre={true} ageRange={false} prompt={false} />
+              <GenreFilter />
+              <div className="mt-40 flex items-end">
+                <button className="bg-primaryColor text-white px-14 py-4 text-2xl rounded-lg shadow-md shadow-primaryColor hover:bg-primaryColor/80 transition duration-500 hover:text-white/80 ml-auto">
+                  Next
+                </button>
+              </div>
             </div>
           </div>
         </div>
