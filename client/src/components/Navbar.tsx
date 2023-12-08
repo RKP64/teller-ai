@@ -40,7 +40,7 @@ export default function BarberMenu() {
             <Link
               color="foreground"
               href="#"
-              className="text-white hover:border-solid hover:border-b hover:border-primaryColor transition-all duration-300"
+              className="text-white hover:border-solid hover:border-b hover:border-primaryColor transition-all duration-300 font-dmsans"
             >
               {item}
             </Link>
