@@ -24,7 +24,10 @@ app.use(
 const specs = swaggerJsdoc(swaggerOptions);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 
+// >> Routes
 const storyRoutes = require("./routes/story.routes.js");
+
+app.use("/api/story", storyRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log(`API-SERVER >> Server running on port ${process.env.PORT}`);
