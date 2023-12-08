@@ -7,7 +7,6 @@ import {
   NavbarContent,
   NavbarItem,
   Link,
-  Button,
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
@@ -23,15 +22,15 @@ export default function BarberMenu() {
     <Navbar
       onMenuOpenChange={setIsMenuOpen}
       id="nav-menu"
-      className="text-white bg-transparent">
+      className="text-white bg-transparent"
+    >
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden"
         />
         <NavbarBrand>
-          {/* <Image src={logo} alt="logo" width={150} height={150} /> */}
-          <h1>Teller.</h1>
+          <Image src="/images/logo.png" alt="logo" width={100} height={100} />
         </NavbarBrand>
       </NavbarContent>
 
@@ -41,7 +40,8 @@ export default function BarberMenu() {
             <Link
               color="foreground"
               href="#"
-              className="text-white hover:border-solid hover:border-b hover:border-primaryColor transition-all duration-300">
+              className="text-white hover:border-solid hover:border-b hover:border-primaryColor transition-all duration-300"
+            >
               {item}
             </Link>
           </NavbarItem>
@@ -49,7 +49,10 @@ export default function BarberMenu() {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem>
-          <Link className="border border-solid border-gray-500 px-[10px] py-2 text-[#fff] text-sm hover:bg-green-500">
+          <Link
+            href="#"
+            className="border border-solid border-gray-500 px-[10px] py-2 text-[#fff] text-sm hover:bg-green-500 cursor-pointer transition duration-500"
+          >
             Create a story
           </Link>
         </NavbarItem>
@@ -67,7 +70,8 @@ export default function BarberMenu() {
               }
               className="w-full"
               href="#"
-              size="lg">
+              size="lg"
+            >
               {item}
             </Link>
           </NavbarMenuItem>
