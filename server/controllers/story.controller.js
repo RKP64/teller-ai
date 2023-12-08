@@ -59,7 +59,16 @@ const createNewStory = async (req, res) => {
       const title = match[1].trim();
       const text = match[2].trim().replace(/\n===\s*$/, "");
       if (title && text) {
-        scenarios.push({ title, text });
+        const response = await openai.images.generate({
+          model: "dall-e-3",
+          prompt: text,
+          n: 1,
+          size: "1792x1024",
+          quality: "hd",
+        });
+        console.log(response);
+
+        scenarios.push({ title, text, image: response.data[0].url });
       }
     }
 
