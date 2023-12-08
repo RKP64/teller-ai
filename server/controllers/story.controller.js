@@ -1,6 +1,53 @@
 const openai = require("../utils/openai_api.js");
 const Story = require("../models/Story.js");
 
+/**
+ * @swagger
+ * tags:
+ *   name: Stories
+ *   description: API for managing stories and scenarios
+ */
+
+/**
+ * @swagger
+ * /api/story:
+ *   post:
+ *     summary: Generate a new story with scenarios
+ *     description: Generates a new story based on user input and returns scenarios.
+ *     tags: [Stories]
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               ageRange:
+ *                 type: string
+ *               prompt:
+ *                 type: string
+ *               genre:
+ *                 type: string
+ *             required:
+ *               - ageRange
+ *               - prompt
+ *               - genre
+ *     responses:
+ *       201:
+ *         description: Successfully generated a new story with scenarios
+ *         content:
+ *           application/json:
+ *             example:
+ *               scenarios:
+ *                 - title: Scenario 1
+ *                   text: This is scenario 1
+ *                   image: https://example.com/scenario1.jpg
+ *               name: Your Story Name
+ *               summary: Your Story Summary
+ *               ageRange: 18+
+ *               prompt: User's prompt
+ *               genre: Fiction
+ */
+
 const createNewStory = async (req, res) => {
   const ageRange = req.body.ageRange;
   const prompt = req.body.prompt;
@@ -79,10 +126,9 @@ const createNewStory = async (req, res) => {
       if (title && text) {
         const response = await openai.images.generate({
           model: "dall-e-3",
-          prompt: text,
+          prompt: `Generate me Digital Disney 3D style image based on next scenario: ${text}`,
           n: 1,
           size: "1792x1024",
-          quality: "hd",
         });
         console.log(response);
 
@@ -110,4 +156,52 @@ const createNewStory = async (req, res) => {
   }
 };
 
-module.exports = { createNewStory };
+/**
+ * @swagger
+ * /api/stories:
+ *   get:
+ *     summary: Get all stories
+ *     description: Retrieve all stories from the database.
+ *     tags: [Stories]
+ *     responses:
+ *       200:
+ *         description: Successfully retrieved all stories
+ *         content:
+ *           application/json:
+ *             example:
+ *               - _id: 1234567890
+ *                 name: Your Story Name 1
+ *                 summary: Your Story Summary 1
+ *                 ageRange: 18+
+ *                 prompt: User's prompt 1
+ *                 genre: Fiction
+ *                 scenarios:
+ *                   - title: Scenario 1
+ *                     text: This is scenario 1
+ *                     image: https://example.com/scenario1.jpg
+ *                   - title: Scenario 2
+ *                     text: This is scenario 2
+ *                     image: https://example.com/scenario2.jpg
+ *               - _id: 0987654321
+ *                 name: Your Story Name 2
+ *                 summary: Your Story Summary 2
+ *                 ageRange: 21+
+ *                 prompt: User's prompt 2
+ *                 genre: Mystery
+ *                 scenarios:
+ *                   - title: Scenario 3
+ *                     text: This is scenario 3
+ *                     image: https://example.com/scenario3.jpg
+ */
+
+const getAllStories = async (req, res) => {
+  try {
+    const stories = await Story.find();
+    res.status(200).json(stories);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send("Internal server error");
+  }
+};
+
+module.exports = { createNewStory, getAllStories };
