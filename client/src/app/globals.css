@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #001e2b !important;
+}
+.slick-arrow {
+  display: none !important;
+}
+.slick-dots li button {
+  outline: none !important;
+}
+.slick-dots li button::before {
+  color: #fff !important;
+  top: 0.5rem !important;
+}
