@@ -6,6 +6,7 @@ const dotenv = require("dotenv");
 const swaggerUi = require("swagger-ui-express");
 const cookieParser = require("cookie-parser");
 const { swaggerOptions } = require("./utils/constants.js");
+const connectDB = require("./database/db");
 
 dotenv.config();
 const app = express();
@@ -31,4 +32,5 @@ app.use("/api/story", storyRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log(`API-SERVER >> Server running on port ${process.env.PORT}`);
+  connectDB();
 });

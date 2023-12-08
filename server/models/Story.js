@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
@@ -50,7 +50,6 @@ const { Schema } = mongoose;
  *         text: Sample scenario text
  *         image: https://example.com/sample-image.jpg
  */
-const mongoose = require('mongoose');
 
 const scenarioSchema = new mongoose.Schema({
   text: {
@@ -91,6 +90,6 @@ const storySchema = new mongoose.Schema({
   scenarios: [scenarioSchema],
 });
 
-const Story = mongoose.model('Story', storySchema);
+const Story = mongoose.model("Story", storySchema);
 
 module.exports = Story;

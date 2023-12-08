@@ -1,4 +1,5 @@
 const openai = require("../utils/openai_api.js");
+const Story = require("../models/Story.js");
 
 const createNewStory = async (req, res) => {
   const ageRange = req.body.ageRange;
@@ -16,27 +17,32 @@ const createNewStory = async (req, res) => {
         {
           role: "system",
           content: `You are a helpful assistant that creates a story based on users' input. 
-                You need to create 6 scenarios. 
-                Every scenario needs to have 200-300 characters in text.
-                Every scenario will be separated like this :
-                Title: Title of that scenario
-                TEXT
-                ===
-                Title: Title of that scenario
-                TEXT
-                ===
-                Title: Title of that scenario
-                TEXT
-                ===
-                Title: Title of that scenario
-                TEXT
-                ===
-                Title: Title of that scenario
-                TEXT
-                ===
-                Title: Title of that scenario
-                TEXT
-                ===`,
+                  You need to create 6 scenarios. 
+                  Every scenario needs to have 200-300 characters in text.
+                  Story which you generate needs to have its name.
+                  Separate it like this :
+                  Story name: NAME OF STORY
+                  Story which you generate needs to have its summary.
+                  Summary: SUMMARY
+                  Every scenario will be separated like this :
+                  Title: Title of that scenario
+                  TEXT
+                  ===
+                  Title: Title of that scenario
+                  TEXT
+                  ===
+                  Title: Title of that scenario
+                  TEXT
+                  ===
+                  Title: Title of that scenario
+                  TEXT
+                  ===
+                  Title: Title of that scenario
+                  TEXT
+                  ===
+                  Title: Title of that scenario
+                  TEXT
+                  ===`,
         },
         { role: "user", content: `Age: ${ageRange}` },
         { role: "user", content: `Genre: ${genre}` },
@@ -50,6 +56,18 @@ const createNewStory = async (req, res) => {
     });
 
     console.log("OpenAI Response:", response);
+
+    // Extract story name and summary
+    const nameMatch = response.choices[0].message.content.match(
+      /Story name: (.*?)(?=\n)/
+    );
+    const summaryMatch =
+      response.choices[0].message.content.match(/Summary: (.*?)(?=\n)/);
+
+    const storyName = nameMatch ? nameMatch[1].trim() : "Your Story Name";
+    const storySummary = summaryMatch
+      ? summaryMatch[1].trim()
+      : "Your Story Summary";
 
     const regex = /Title: (.*?)\n(.*?)(?=\s*Title:|$)/gs;
     let match;
@@ -72,7 +90,18 @@ const createNewStory = async (req, res) => {
       }
     }
 
-    console.log("Scenarios:", scenarios);
+    const newStory = new Story({
+      name: storyName,
+      summary: storySummary,
+      ageRange,
+      prompt,
+      genre,
+      scenarios,
+    });
+
+    const savedStory = await newStory.save();
+
+    console.log("Saved Story:", savedStory);
 
     return res.status(201).json(scenarios);
   } catch (error) {
