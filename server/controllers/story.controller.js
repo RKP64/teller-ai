@@ -65,7 +65,7 @@ const createNewStory = async (req, res) => {
           role: "system",
           content: `You are a helpful assistant that creates a story based on users' input. 
                   You need to create 6 scenarios. 
-                  Every scenario needs to have 200-300 characters in text.
+                  Every scenario must have 200-300 characters in text.
                   Story which you generate needs to have its name.
                   Separate it like this :
                   Story name: NAME OF STORY
@@ -158,7 +158,7 @@ const createNewStory = async (req, res) => {
 
 /**
  * @swagger
- * /api/stories:
+ * /api/story:
  *   get:
  *     summary: Get all stories
  *     description: Retrieve all stories from the database.
