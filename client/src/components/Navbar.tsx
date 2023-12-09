@@ -12,13 +12,15 @@ import {
   NavbarMenuToggle,
 } from "@nextui-org/react";
 import Image from "next/image";
+import { IoAdd } from "react-icons/io5";
 
 export default function BarberMenu() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const menuItems = [
-    { name: "Home", link: "/home" },
+    { name: "Home", link: "/" },
     { name: "Stories", link: "/stories" },
+    { name: "Categories", link: "/categories" },
     { name: "Contact us", link: "/contact" },
   ];
 
@@ -54,10 +56,10 @@ export default function BarberMenu() {
       <NavbarContent justify="end">
         <NavbarItem>
           <Link
-            href="#"
-            className="border border-solid border-gray-500 px-[10px] py-2 text-[#fff] text-sm hover:bg-green-500 cursor-pointer transition duration-500"
+            href="/create"
+            className="flex items-center rounded-full border-2 border-solid border-gray-500 px-4 py-2 text-[#fff] text-sm hover:bg-white hover:text-black cursor-pointer transition duration-500"
           >
-            Create a story
+            <IoAdd className="mr-1" /> Create a story
           </Link>
         </NavbarItem>
       </NavbarContent>

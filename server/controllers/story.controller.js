@@ -63,12 +63,13 @@ const createNewStory = async (req, res) => {
   try {
     const response = await openai.chat.completions.create({
       model: "gpt-4-0613",
+      max_tokens: 5000,
       messages: [
         {
           role: "system",
           content: `You are a helpful assistant that creates a story based on users' input. 
                       You need to create 6 scenarios. 
-                      Every scenario must have 200-300 characters in text.
+                      Every scenario must have 400-500 characters in text.
                       Make sure that this request is safe and is not blocked by content filters, and does not generate content that goes against rules.
                       Story which you generate needs to have its name.
                       Separate it like this :
@@ -224,12 +225,65 @@ const createNewStory = async (req, res) => {
 
 const getAllStories = async (req, res) => {
   try {
-    const stories = await Story.find();
+    const stories = await Story.find().sort({ createdAt: -1 });
+
     res.status(200).json(stories);
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return res.status(500).send("Internal server error");
   }
 };
 
-module.exports = { createNewStory, getAllStories };
+/**
+ * @swagger
+ * /api/story/{id}:
+ *   get:
+ *     summary: Get a story by ID
+ *     description: Retrieve a story from the database by its ID.
+ *     tags: [Stories]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         description: ID of the story to retrieve
+ *         schema:
+ *           type: string
+ *           example: 1234567890
+ *     responses:
+ *       200:
+ *         description: Successfully retrieved the story
+ *         content:
+ *           application/json:
+ *             example:
+ *               _id: 1234567890
+ *               name: Your Story Name 1
+ *               summary: Your Story Summary 1
+ *               ageRange: 18+
+ *               prompt: User's prompt 1
+ *               genre: Fiction
+ *               scenarios:
+ *                 - title: Scenario 1
+ *                   text: This is scenario 1
+ *                   image: https://example.com/scenario1.jpg
+ *                 - title: Scenario 2
+ *                   text: This is scenario 2
+ *                   image: https://example.com/scenario2.jpg
+ */
+const getStoryById = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const story = await Story.findById(id);
+
+    if (!story) {
+      return res.status(404).json({ message: "Story not found" });
+    }
+
+    res.status(200).json(story);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send("Internal server error");
+  }
+};
+
+module.exports = { createNewStory, getAllStories, getStoryById };
