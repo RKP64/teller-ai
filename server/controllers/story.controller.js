@@ -182,6 +182,15 @@ const createNewStory = async (req, res) => {
           speed: "1.0",
         });
 
+        const cleanText = text
+          .replace(/[^\w\s]/gi, "")
+          .replace(/\s+/g, "_")
+          .slice(0, 10);
+        const contentHash = require("crypto")
+          .createHash("md5")
+          .update(text)
+          .digest("hex");
+        const timestamp = new Date().toISOString();
         const voicePath = path.join(
           __dirname,
           "..",
@@ -190,15 +199,22 @@ const createNewStory = async (req, res) => {
           "public",
           "voices",
           "stories",
-          `test.mp3`
+          `${cleanText}_${contentHash}_${timestamp}.mp3`
         );
+
+        console.log(`${cleanText}_${contentHash}_${timestamp}.mp3`);
 
         await streamToFile(mp3.body, voicePath);
 
         console.log(mp3.body);
 
         // console.log(voicePath);
-        scenarios.push({ title, text, image: `/images/stories/${imageName}` });
+        scenarios.push({
+          title,
+          text,
+          image: `/images/stories/${imageName}`,
+          voice: `/voices/stories/${cleanText}_${contentHash}_${timestamp}.mp3`,
+        });
       }
     }
 
