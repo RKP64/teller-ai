@@ -19,7 +19,7 @@ interface HeaderProps {
 
 const Header = ({ stories }: HeaderProps) => {
   const shuffledStories = shuffle(stories);
-  const words = shuffledStories && shuffledStories[0].name.split(" ");
+  const words = shuffledStories && shuffledStories[0]?.name?.split(" ");
 
   useEffect(() => {
     AOS.init();
@@ -30,7 +30,7 @@ const Header = ({ stories }: HeaderProps) => {
       className="relative"
       style={{
         backgroundImage: `url(${
-          shuffledStories && shuffledStories[0].scenarios[0].image
+          shuffledStories && shuffledStories[0]?.scenarios[0]?.image
         })`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
@@ -55,11 +55,11 @@ const Header = ({ stories }: HeaderProps) => {
                 ))}
             </h1>
             <p className="text-gray-400 leading-[1.7] mb-12">
-              {shuffledStories && shuffledStories[0].scenarios[0].text}
+              {shuffledStories && shuffledStories[0]?.scenarios[0]?.text}
             </p>
             <div>
               <Link
-                href={"/create"}
+                href={`/story/${shuffledStories[0]?._id}`}
                 className="text-white font-bold bg-gray-400/80 flex items-center max-w-max rounded-xl shadow-lg shadow-gray-400 p-4 hover:bg-gray-400 duration-300">
                 <IoPlaySharp className="mr-1 font-bold w-6 h-6" /> Play a story
               </Link>
@@ -77,7 +77,7 @@ const Header = ({ stories }: HeaderProps) => {
                   const allScenarios = shuffledStories.flatMap(
                     (story: IStory) =>
                       story.scenarios.map(
-                        (scenario: IScenario) => scenario.text
+                        (scenario: IScenario) => scenario?.text
                       )
                   );
 

@@ -59,8 +59,7 @@ const StoryPage = () => {
         backgroundRepeat: "no-repeat",
         height: "100vh",
       }}
-      className={`crossfade relative`}
-    >
+      className={`crossfade relative`}>
       <audio
         src={story?.scenarios[currentStep].voice}
         autoPlay={true}
@@ -118,8 +117,7 @@ const StoryPage = () => {
               {currentStep !== 0 && (
                 <button
                   onClick={handlePreviousButton}
-                  className={`rounded-lg text-xl border px-8 py-4 text-white shadow-md shadow-gray-500 border-gray-500 bg-gray-500 hover:border-primaryColor hover:text-primaryColortransition duration-500`}
-                >
+                  className={`rounded-lg text-xl border px-8 py-4 text-white shadow-md shadow-gray-500 border-gray-500 bg-gray-500 hover:border-primaryColor hover:text-primaryColortransition duration-500`}>
                   Previous
                 </button>
               )}
@@ -127,8 +125,7 @@ const StoryPage = () => {
             <div>
               <button
                 onClick={handleNextButton}
-                className="bg-primaryColor text-white px-14 py-4 text-2xl rounded-lg shadow-md shadow-primaryColor hover:bg-primaryColor/80 transition duration-500 hover:text-white/80 ml-auto"
-              >
+                className="bg-primaryColor text-white px-14 py-4 text-2xl rounded-lg shadow-md shadow-primaryColor hover:bg-primaryColor/80 transition duration-500 hover:text-white/80 ml-auto">
                 {story && currentStep === story?.scenarios.length - 1
                   ? "Finish"
                   : "Next"}
