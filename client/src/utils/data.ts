@@ -212,3 +212,59 @@ export const headerData = [
     ],
   },
 ];
+export const stories = [
+  {
+    id: 1,
+    storie: "Noteworthy technology acquisitions 2021",
+    paragraph: "Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
+    imageUrl: "https://images.pexels.com/photos/1732370/pexels-photo-1732370.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+{
+    id: 2,
+    storie: "Noteworthy technology acquisitions 2021",
+    paragraph: "Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
+    imageUrl: "https://images.pexels.com/photos/1732370/pexels-photo-1732370.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    id: 3,
+    storie: "Noteworthy technology acquisitions 2021",
+    paragraph: "Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
+    imageUrl: "https://images.pexels.com/photos/1732370/pexels-photo-1732370.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    id: 4,
+    storie: "Noteworthy technology acquisitions 2021",
+    paragraph: "Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
+    imageUrl: "https://images.pexels.com/photos/1732370/pexels-photo-1732370.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    id:6,
+    storie: "Noteworthy technology acquisitions 2021",
+    paragraph: "Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
+    imageUrl: "https://images.pexels.com/photos/1732370/pexels-photo-1732370.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    id: 7,
+    storie: "Noteworthy technology acquisitions 2021",
+    paragraph: "Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
+    imageUrl: "https://images.pexels.com/photos/1732370/pexels-photo-1732370.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    id: 8,
+    storie: "Noteworthy technology acquisitions 2021",
+    paragraph: "Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
+    imageUrl: "https://images.pexels.com/photos/1732370/pexels-photo-1732370.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    id: 9,
+    storie: "Noteworthy technology acquisitions 2021",
+    paragraph: "Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
+    imageUrl: "https://images.pexels.com/photos/1732370/pexels-photo-1732370.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+  {
+    id: 10,
+    storie: "Noteworthy technology acquisitions 2021",
+    paragraph: "Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.",
+    imageUrl: "https://images.pexels.com/photos/1732370/pexels-photo-1732370.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  },
+]
