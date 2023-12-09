@@ -190,7 +190,7 @@ const createNewStory = async (req, res) => {
           .createHash("md5")
           .update(text)
           .digest("hex");
-        const timestamp = new Date().toISOString();
+        const timestamp = new Date().toISOString().replace(/:/g, "_");
         const voicePath = path.join(
           __dirname,
           "..",
