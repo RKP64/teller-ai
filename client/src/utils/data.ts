@@ -1,35 +1,35 @@
 export const genres = [
   {
     id: 1,
-    genre: "Science Fiction",
-  },
-  {
-    id: 2,
-    genre: "Fantasy",
-  },
-  {
-    id: 3,
-    genre: "Mystery/Thriller",
-  },
-  {
-    id: 4,
-    genre: "Adventure",
-  },
-  {
-    id: 5,
     genre: "Horror",
   },
   {
-    id: 6,
+    id: 2,
     genre: "Comedy",
   },
   {
+    id: 3,
+    genre: "For Kids",
+  },
+  {
+    id: 4,
+    genre: "Romancy",
+  },
+  {
+    id: 5,
+    genre: "History",
+  },
+  {
+    id: 6,
+    genre: "Sci-Fi",
+  },
+  {
     id: 7,
-    genre: "Slice of Life",
+    genre: "Fairytales",
   },
   {
     id: 8,
-    genre: "Kids",
+    genre: "Psychological",
   }
 ];
 
@@ -40,19 +40,22 @@ export const stepData = [
     id: 1,
     title: "Step 1",
     paragraph:
-      "All recipes are written using certain conventions, which define the characteristics of common ingredients. The rules vary from place to place.",
+      "Explore genres to set the tone. From mystery to fantasy, your choice molds the narrative canvas. Select and envision.",
+      duration: "2000"
   },
   {
     id: 2,
     title: "Step 2",
     paragraph:
-      "All recipes are written using certain conventions, which define the characteristics of common ingredients. The rules vary from place to place.",
+      "Consider your audience. Tailor the story for young minds or mature readers. Age range shapes the language, themes, and complexity.",
+      duration: "2500"
   },
   {
     id: 3,
     title: "Step 3",
     paragraph:
-      "All recipes are written using certain conventions, which define the characteristics of common ingredients. The rules vary from place to place.",
+      "Craft a prompt to ignite imagination. What's the story about? Even just a single sentence sparks the narrative, guiding your creative journey.",
+      duration: "3000"
   },
 ];
 export const popularData = [
@@ -126,9 +129,38 @@ export const genresData = [
 export const headerSettings = {
   dots: true,
   infinite: true,
-  speed: 500,
+  autoplay: false,
+  speed: 1000,
+  autoplaySpeed: 3000,
+  cssEase: "linear",
   slidesToShow: 1,
   slidesToScroll: 1,
+  responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            initialSlide: 1
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
 };
 export const popularSettings = {
   dots: true,
@@ -136,13 +168,71 @@ export const popularSettings = {
   speed: 500,
   slidesToShow: 3,
   slidesToScroll: 3,
+  autoplay: false,
+  autoplaySpeed: 2500,
+  cssEase: "linear",
+  responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            initialSlide: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
 };
 export const genresSettings = {
   dots: true,
   infinite: true,
-  speed: 500,
+  speed: 1000,
+  autoplay: false,
+  autoplaySpeed: 5000,
+  cssEase: "linear",
   slidesToShow: 1,
   slidesToScroll: 1,
+  responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            initialSlide: 1
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
 };
 export const headerData = [
   {

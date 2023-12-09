@@ -1,22 +1,40 @@
+"use client";
+
 import React from "react";
 import { stepData } from "@/utils/data";
 import Image from "next/image";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const Step = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
     <section className="container mx-auto my-24 px-8 lg:px-8 relative pb-12">
-      <div className="flex flex-col">
+      <div
+        className="flex flex-col"
+        data-aos="fade-right"
+        data-aos-duration="2000"
+        data-aos-easing="linear">
         <h1 className="text-5xl text-primaryColor font-bold">Steps</h1>
         <p className="text-gray-400 max-w-[500px] mb-8 text-[17px] mt-4">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Introduction: Crafting a story is a journey in three steps: choose a
+          genre, define the age range, and set a creative prompt.
         </p>
       </div>
       <div>
         <div className="grid gap-6 row-gap-10 lg:grid-cols-2">
           <div className="lg:py-6 lg:pr-16">
             {stepData.map((step, i) => (
-              <div className="flex" key={i}>
+              <div
+                className="flex"
+                key={i}
+                data-aos="fade-up"
+                data-aos-duration={`${step.duration}`}
+                data-aos-easing="linear">
                 <div className="flex flex-col items-center mr-4">
                   <div>
                     <div className="flex items-center justify-center w-10 h-10 border rounded-full">
@@ -52,7 +70,11 @@ const Step = () => {
               </div>
             ))}
 
-            <div className="flex">
+            <div
+              className="flex"
+              data-aos="fade-up"
+              data-aos-duration="5000"
+              data-aos-easing="linear">
               <div className="flex flex-col items-center mr-4">
                 <div>
                   <div className="flex items-center justify-center w-10 h-10 border rounded-full">
@@ -72,7 +94,11 @@ const Step = () => {
                   </div>
                 </div>
               </div>
-              <div className="pt-1">
+              <div
+                className="pt-1"
+                data-aos="fade-up"
+                data-aos-duration="5000"
+                data-aos-easing="linear">
                 <p className="mb-2 text-lg font-bold text-white">Success</p>
                 <p className="text-white" />
               </div>

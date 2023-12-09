@@ -1,33 +1,36 @@
 "use client";
 
-import React from "react";
-import { genresData } from "@/utils/data";
-import PageTitle from "@/utils/PageTitle";
+import React, { useEffect } from "react";
 import Slider from "react-slick";
 import { genres } from "@/utils/data";
 import { genresSettings } from "@/utils/data";
 import Image from "next/image";
 import { IStory } from "@/interfaces/IStory";
-
+import Link from "next/link";
+import AOS from "aos";
+import "aos/dist/aos.css";
 interface GenresProps {
   stories: IStory[] | undefined;
 }
 
 const Genres = ({ stories }: GenresProps) => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   return (
     <section className="container mx-auto my-16 px-8 lg:px-8 relative pb-12">
       <div>
-        <div className="flex flex-col">
+        <div className="flex flex-col" data-aos="fade-up">
           <h1 className="text-5xl text-primaryColor font-bold">Genres</h1>
           <p className="text-gray-400 max-w-[500px] mb-8 text-[17px] mt-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Explore Teller's genre options: select one, weave a tale. Genre
+            choices shape stories & create worlds.
           </p>
         </div>
       </div>
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-1 md:grid-cols-2">
         <div className="flex flex-col gap-4 mt-6">
-          <div className="flex gap-4 text-white">
+          <div className="flex flex-wrap gap-4 text-white">
             {genres.slice(0, 4).map((data, i) => (
               <div
                 key={i}
@@ -36,7 +39,7 @@ const Genres = ({ stories }: GenresProps) => {
               </div>
             ))}
           </div>
-          <div className="flex gap-4 text-white">
+          <div className="flex flex-wrap gap-4 text-white">
             {genres.slice(4, 7).map((data, i) => (
               <div
                 key={i}
@@ -45,7 +48,7 @@ const Genres = ({ stories }: GenresProps) => {
               </div>
             ))}
           </div>
-          <div className="flex gap-4 text-white">
+          <div className="flex flex-wrap gap-4 text-white">
             {genres.slice(7).map((data, i) => (
               <div
                 key={i}
@@ -55,10 +58,10 @@ const Genres = ({ stories }: GenresProps) => {
             ))}
           </div>
         </div>
-        <div className="ml-32 mt-[-10rem]">
+        <div className="mt-8 lg:ml-32 lg:mt-[-10rem]">
           <Slider {...genresSettings}>
             {stories?.map((data: IStory) => (
-              <div key={data._id}>
+              <Link key={data._id} href={`/story/${data._id}`}>
                 <Image
                   src={data.scenarios[0].image}
                   className="object-cover w-full h-64 mb-6 rounded shadow-lg lg:h-80 xl:h-96 opacity-80"
@@ -70,7 +73,7 @@ const Genres = ({ stories }: GenresProps) => {
                   {data.name}
                 </h5>
                 <p className="text-white">{data.summary}</p>
-              </div>
+              </Link>
             ))}
           </Slider>
         </div>

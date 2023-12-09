@@ -14,12 +14,13 @@ export const Footer = () => {
           </a>
           <div className="mt-6 lg:max-w-sm">
             <p className="text-sm text-white">
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-              accusantium doloremque laudantium, totam rem aperiam.
+              Bring your imagination to life with Teller. Discover boundless
+              creativity in our imaginative haven.
             </p>
             <p className="mt-4 text-sm text-white">
-              Eaque ipsa quae ab illo inventore veritatis et quasi architecto
-              beatae vitae dicta sunt explicabo.
+              Become a part of our vibrant community, and explore endless
+              possibilities of storytelling. Thank you for contributing to the
+              magic of Teller!
             </p>
           </div>
         </div>
