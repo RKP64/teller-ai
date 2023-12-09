@@ -41,8 +41,10 @@ const StoryPage = () => {
 
   const handleNextButton = () => {
     if (story) {
-      if (currentStep >= story?.scenarios.length - 1) return true;
-      else {
+      if (currentStep >= story?.scenarios.length - 1) {
+        router.push("/");
+        return true;
+      } else {
         setCurrentStep(currentStep + 1);
       }
     }
@@ -99,7 +101,9 @@ const StoryPage = () => {
                 onClick={handleNextButton}
                 className="bg-primaryColor text-white px-14 py-4 text-2xl rounded-lg shadow-md shadow-primaryColor hover:bg-primaryColor/80 transition duration-500 hover:text-white/80 ml-auto"
               >
-                Next
+                {story && currentStep === story?.scenarios.length - 1
+                  ? "Finish"
+                  : "Next"}
               </button>
             </div>
           </div>
