@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import Slider from "react-slick";
 import { FaStar } from "react-icons/fa6";
@@ -10,6 +10,8 @@ import { IScenario, IStory } from "@/interfaces/IStory";
 import { shuffle } from "@/utils/shuffle";
 import { calculateReadingTime } from "@/utils/utils";
 import { IoAdd } from "react-icons/io5";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 interface HeaderProps {
   stories: IStory[] | undefined;
@@ -18,6 +20,10 @@ interface HeaderProps {
 const Header = ({ stories }: HeaderProps) => {
   const shuffledStories = shuffle(stories);
   const words = shuffledStories && shuffledStories[0].name.split(" ");
+
+  useEffect(() => {
+    AOS.init();
+  }, []);
 
   return (
     <section
@@ -32,10 +38,12 @@ const Header = ({ stories }: HeaderProps) => {
         width: "100%",
       }}>
       <div id="opacity"></div>
-      <div className="container mx-auto pt-16 mb-16 px-8 lg:px-8 relative">
-        <div className="grid grid-cols-2">
+      <div className="container mx-auto pt-4 md:pt-16 mb-16 px-8 lg:px-16 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-2">
           <div className="pb-12 flex flex-col pt-8">
-            <h1 className="text-white text-7xl mb-4 font-bold max-w-[500px] leading-[1.2]">
+            <h1
+              data-aos="fade-right"
+              className="text-white text-5xl md:text-5xl xl:text-7xl mb-4 font-bold max-w-[500px] leading-[1.2]">
               {words &&
                 words.map((word: string, index: number) => (
                   <span
@@ -57,7 +65,7 @@ const Header = ({ stories }: HeaderProps) => {
               </Link>
             </div>
           </div>
-          <div className="pl-[90px] ml-16 mb-12">
+          <div className="lg:ml-16 xl:pl-[63px] 2xl:pl-[180px] xl:ml-16 mb-6 xl:mb-12">
             <Slider {...headerSettings}>
               {shuffledStories &&
                 shuffledStories.map((data: IStory) => {
@@ -77,9 +85,10 @@ const Header = ({ stories }: HeaderProps) => {
                   const totalReadingTime = calculateReadingTime(allTexts);
 
                   return (
-                    <div
+                    <Link
                       key={data._id}
                       id="header-item"
+                      href={`/story/${data._id}`}
                       className="text-white border border-solid border-gray-400 p-[20px] rounded-lg">
                       <div className="flex flex-col gap-4 mb-6">
                         <h3 className="text-2xl font-bold">
@@ -105,7 +114,7 @@ const Header = ({ stories }: HeaderProps) => {
                           Reviews
                         </h3>
                         <div className="flex gap-4">
-                          {[0, 5].map((star, i) => (
+                          {[0, 1, 2, 3, 4].map((star, i) => (
                             <div key={i}>
                               <FaStar />
                             </div>
@@ -123,8 +132,9 @@ const Header = ({ stories }: HeaderProps) => {
                         </h3>
                         <div className="flex gap-4 justify-center items-center py-5">
                           <div className="flex gap-4">
-                            {data.scenarios?.map(
-                              (gallery: IScenario, i: number) => (
+                            {data.scenarios
+                              ?.slice(0, 3)
+                              .map((gallery: IScenario, i: number) => (
                                 <div key={i}>
                                   <Image
                                     src={gallery.image}
@@ -133,16 +143,16 @@ const Header = ({ stories }: HeaderProps) => {
                                     height={1000}
                                     className="cursor-pointer"
                                     style={{
-                                      width: "100px",
+                                      width: "160px",
+                                      height: "130px",
                                     }}
                                   />
                                 </div>
-                              )
-                            )}
+                              ))}
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </Link>
                   );
                 })}
             </Slider>

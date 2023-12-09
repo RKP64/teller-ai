@@ -4,9 +4,11 @@ import BackButton from "@/components/BackButton";
 import AgeRangeFilter from "@/components/Filters/AgeRange";
 import GenreFilter from "@/components/Filters/Genre";
 import Header from "@/components/Filters/Header";
+import NarratorFilter from "@/components/Filters/Narrator";
 import UserPrompt from "@/components/Filters/UserPrompt";
 import LoadingPage from "@/components/Loading";
 import StoryAPI, { CreateStoryParams } from "@/interceptor/Story/Story";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
@@ -14,20 +16,26 @@ const CreateStoryPage = () => {
   const [step, setStep] = useState<number>(1);
   const [genre, setGenre] = useState<string>("");
   const [ageRange, setAgeRange] = useState<string>("");
+  const [narrator, setNarrator] = useState<string>("");
   const [userPrompt, setUserPrompt] = useState<string>("");
   const [loadingState, setLoadingState] = useState<boolean>(false);
 
+  const router = useRouter();
+
   const handleNextStep = async (step: number) => {
-    if (step > 3) {
+    if (step > 4) {
       try {
         setLoadingState(true);
         const storyParams: CreateStoryParams = {
           genre,
           ageRange,
+          narrator,
           prompt: userPrompt,
         };
-        await StoryAPI.createStory(storyParams);
+        const response = await StoryAPI.createStory(storyParams);
+        console.log(response);
         toast.success("Successfully generated new story.");
+        router.push(`/story/${response.data._id}`);
       } catch (error) {
         toast.error("An error occured while generating story.");
       }
@@ -71,15 +79,20 @@ const CreateStoryPage = () => {
                 </svg>
               </div>
               <Header
-                genre={true}
-                ageRange={step === 2 || step === 3 ? true : false}
-                prompt={step === 3 ? true : false}
+                genre={step >= 1}
+                ageRange={step >= 2}
+                narrator={step >= 3}
+                prompt={step >= 4}
               />
+
               {step === 1 && <GenreFilter genre={genre} setGenre={setGenre} />}
               {step === 2 && (
                 <AgeRangeFilter age={ageRange} setAgeRange={setAgeRange} />
               )}
               {step === 3 && (
+                <NarratorFilter narrator={narrator} setNarrator={setNarrator} />
+              )}
+              {step === 4 && (
                 <UserPrompt
                   userPrompt={userPrompt}
                   setUserPrompt={setUserPrompt}
@@ -98,7 +111,7 @@ const CreateStoryPage = () => {
                   onClick={() => handleNextStep(step + 1)}
                   className="bg-primaryColor text-white px-14 py-4 text-2xl rounded-lg shadow-md shadow-primaryColor hover:bg-primaryColor/80 transition duration-500 hover:text-white/80 ml-auto"
                 >
-                  {step === 3 ? "Finish" : "Next"}
+                  {step === 4 ? "Finish" : "Next"}
                 </button>
               </div>
             </div>

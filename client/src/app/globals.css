@@ -8,8 +8,17 @@ body {
   background-color: #001e2b !important;
   font-family: "DM Sans", sans-serif !important;
 }
+.play-btn {
+  box-shadow: 3px 3px 10px #b5b5b5;
+  height: 150px;
+  width: 150px;
+}
+
 .slick-arrow {
   display: none !important;
+}
+#popular .slick-dots {
+  bottom: -48px !important;
 }
 .slick-dots li button {
   outline: none !important;
@@ -23,7 +32,15 @@ body {
   background-color: white;
   transition: opacity 0.5s ease-out;
 }
-
+#opacity-story {
+  background: #000;
+  opacity: 0.4;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
 .crossfade {
   background-size: cover;
   background-repeat: no-repeat;
@@ -54,9 +71,7 @@ body {
   background-color: #57b688;
   border: 1px solid #57b688;
 }
-#nav-menu header {
-  max-width: 1519px !important;
-}
+
 #geners-carousel {
   position: relative;
   background-position: center;
@@ -81,10 +96,55 @@ body {
   background: #000;
   opacity: 0.7;
 }
-.bg-default-300\/50{
+.bg-default-300\/50 {
   background-color: unset !important;
 }
 #header-item {
   backdrop-filter: blur(15px);
   background: rgb(0 30 43 / 40%);
+}
+/* Spinner */
+.loadingSpinnerContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 5000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loadingSpinner {
+  width: 64px;
+  height: 64px;
+  border: 8px solid;
+  border-color: rgb(10, 77, 107) transparent rgb(10, 77, 107) transparent;
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@media (min-width: 1000px) {
+  .slick-dots {
+    display: none !important;
+  }
+}
+@media (max-width: 1000px) {
+  #nav-menu header {
+    max-width: 950px !important;
+  }
+}
+@media (min-width: 2000px) {
+  #nav-menu header {
+    max-width: 1519px !important;
+  }
 }
