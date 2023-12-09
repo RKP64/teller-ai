@@ -8,6 +8,30 @@ body {
   background-color: #001e2b !important;
   font-family: "DM Sans", sans-serif !important;
 }
+
+.underlined {
+  position: relative;
+}
+
+.underline-clip:after {
+  content: "";
+  position: absolute;
+  top: 95%;
+  width: 150%;
+  aspect-ratio: 3 / 1;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border-radius: 50%;
+  border: 6px solid #65cf94;
+  clip-path: polygon(0 0, 30% 30%, 100% 0);
+}
+
+.play-btn {
+  box-shadow: 3px 3px 10px #b5b5b5;
+  height: 150px;
+  width: 150px;
+}
+
 .slick-arrow {
   display: none !important;
 }

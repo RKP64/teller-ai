@@ -18,8 +18,11 @@ const Step = () => {
         className="flex flex-col"
         data-aos="fade-right"
         data-aos-duration="2000"
-        data-aos-easing="linear">
-        <h1 className="text-5xl text-primaryColor font-bold">Steps</h1>
+        data-aos-easing="linear"
+      >
+        <h1 className="text-5xl text-primaryColor font-bold underlined">
+          Steps
+        </h1>
         <p className="text-gray-400 max-w-[500px] mb-8 text-[17px] mt-4">
           Introduction: Crafting a story is a journey in three steps: choose a
           genre, define the age range, and set a creative prompt.
@@ -34,7 +37,8 @@ const Step = () => {
                 key={i}
                 data-aos="fade-up"
                 data-aos-duration={`${step.duration}`}
-                data-aos-easing="linear">
+                data-aos-easing="linear"
+              >
                 <div className="flex flex-col items-center mr-4">
                   <div>
                     <div className="flex items-center justify-center w-10 h-10 border rounded-full">
@@ -44,7 +48,8 @@ const Step = () => {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        viewBox="0 0 24 24">
+                        viewBox="0 0 24 24"
+                      >
                         <line
                           fill="none"
                           strokeMiterlimit="10"
@@ -64,7 +69,9 @@ const Step = () => {
                   <div className="w-px h-full bg-gray-300" />
                 </div>
                 <div className="pt-1 pb-8">
-                  <p className="mb-2 text-lg font-bold">{step.title}</p>
+                  <p className="mb-2 text-lg font-bold text-white">
+                    {step.title}
+                  </p>
                   <p className="text-white">{step.paragraph}</p>
                 </div>
               </div>
@@ -74,14 +81,16 @@ const Step = () => {
               className="flex"
               data-aos="fade-up"
               data-aos-duration="5000"
-              data-aos-easing="linear">
+              data-aos-easing="linear"
+            >
               <div className="flex flex-col items-center mr-4">
                 <div>
                   <div className="flex items-center justify-center w-10 h-10 border rounded-full">
                     <svg
                       className="w-6 text-white"
                       stroke="currentColor"
-                      viewBox="0 0 24 24">
+                      viewBox="0 0 24 24"
+                    >
                       <polyline
                         fill="none"
                         strokeWidth="2"
@@ -98,7 +107,8 @@ const Step = () => {
                 className="pt-1"
                 data-aos="fade-up"
                 data-aos-duration="5000"
-                data-aos-easing="linear">
+                data-aos-easing="linear"
+              >
                 <p className="mb-2 text-lg font-bold text-white">Success</p>
                 <p className="text-white" />
               </div>
@@ -106,12 +116,21 @@ const Step = () => {
           </div>
           <div className="relative">
             <Image
-              className="inset-0 object-cover object-bottom w-full rounded shadow-lg h-96 lg:absolute lg:h-full"
-              src="https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
+              className="inset-0 object-cover object-bottom w-full rounded-lg shadow-lg shadow-gray-700 h-96 lg:absolute lg:h-full border-2 border-gray-800"
+              src="/images/app.png"
               alt=""
               height={1000}
               width={1000}
             />
+            <div className="absolute inset-0 flex items-center justify-center cursor-pointer">
+              <svg
+                className="w-24 h-24 text-white play-btn shadow-lg hover:shadow-2xl transition duration-500 shadow-white rounded-full border-2 border-white"
+                fill="#57b688"
+                viewBox="0 0 24 24"
+              >
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
           </div>
         </div>
       </div>
