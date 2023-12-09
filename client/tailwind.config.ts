@@ -13,6 +13,9 @@ const config: Config = {
       'dmsans': ['DM Sans', 'sans-serif']
     },
     extend: {
+      animation:{
+        "spin-slow":"spin 3s linear infinite",
+      },
       colors: {
         "primaryColor" :"#57b688"
       }

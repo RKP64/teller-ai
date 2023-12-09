@@ -51,6 +51,20 @@ const axios = require("axios");
  *               genre: Fiction
  */
 
+async function streamToFile(stream, path) {
+  return new Promise((resolve, reject) => {
+    const writeStream = fs
+      .createWriteStream(path)
+      .on("error", reject)
+      .on("finish", resolve);
+
+    stream.pipe(writeStream).on("error", (error) => {
+      writeStream.close();
+      reject(error);
+    });
+  });
+}
+
 const createNewStory = async (req, res) => {
   const ageRange = req.body.ageRange;
   const prompt = req.body.prompt;
@@ -62,8 +76,8 @@ const createNewStory = async (req, res) => {
 
   try {
     const response = await openai.chat.completions.create({
-      model: "gpt-4-0613",
-      max_tokens: 5000,
+      model: "gpt-4-1106-preview",
+      max_tokens: 1200,
       messages: [
         {
           role: "system",
@@ -161,6 +175,29 @@ const createNewStory = async (req, res) => {
         });
         imageResponse.data.pipe(imageStream);
 
+        const mp3 = await openai.audio.speech.create({
+          model: "tts-1",
+          voice: "nova",
+          input: text,
+          speed: "1.0",
+        });
+
+        const voicePath = path.join(
+          __dirname,
+          "..",
+          "..",
+          "client",
+          "public",
+          "voices",
+          "stories",
+          `test.mp3`
+        );
+
+        await streamToFile(mp3.body, voicePath);
+
+        console.log(mp3.body);
+
+        // console.log(voicePath);
         scenarios.push({ title, text, image: `/images/stories/${imageName}` });
       }
     }

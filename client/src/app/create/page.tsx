@@ -5,6 +5,7 @@ import AgeRangeFilter from "@/components/Filters/AgeRange";
 import GenreFilter from "@/components/Filters/Genre";
 import Header from "@/components/Filters/Header";
 import UserPrompt from "@/components/Filters/UserPrompt";
+import LoadingPage from "@/components/Loading";
 import StoryAPI, { CreateStoryParams } from "@/interceptor/Story/Story";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -42,7 +43,7 @@ const CreateStoryPage = () => {
 
   return (
     <div>
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden hidden">
         <div className="mt-2 md:mt-0 py-12 pb-6 sm:py-16 lg:pb-24 overflow-hidden">
           <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 relative">
             <div className="relative mt-12 lg:mt-20 bg-gray-800 rounded-lg p-10">
@@ -100,6 +101,7 @@ const CreateStoryPage = () => {
           </div>
         </div>
       </section>
+      <LoadingPage />
     </div>
   );
 };
