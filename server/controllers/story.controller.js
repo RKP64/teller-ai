@@ -1,5 +1,8 @@
 const openai = require("../utils/openai_api.js");
 const Story = require("../models/Story.js");
+const fs = require("fs");
+const path = require("path");
+const axios = require("axios");
 
 /**
  * @swagger
@@ -64,36 +67,40 @@ const createNewStory = async (req, res) => {
         {
           role: "system",
           content: `You are a helpful assistant that creates a story based on users' input. 
-                  You need to create 6 scenarios. 
-                  Every scenario must have 200-300 characters in text.
-                  Story which you generate needs to have its name.
-                  Separate it like this :
-                  Story name: NAME OF STORY
-                  Story which you generate needs to have its summary.
-                  Summary: SUMMARY
-                  Every scenario will be separated like this :
-                  Title: Title of that scenario
-                  TEXT
-                  ===
-                  Title: Title of that scenario
-                  TEXT
-                  ===
-                  Title: Title of that scenario
-                  TEXT
-                  ===
-                  Title: Title of that scenario
-                  TEXT
-                  ===
-                  Title: Title of that scenario
-                  TEXT
-                  ===
-                  Title: Title of that scenario
-                  TEXT
-                  ===`,
+                      You need to create 6 scenarios. 
+                      Every scenario must have 200-300 characters in text.
+                      Make sure that this request is safe and is not blocked by content filters, and does not generate content that goes against rules.
+                      Story which you generate needs to have its name.
+                      Separate it like this :
+                      Story name: NAME OF STORY
+                      Story which you generate needs to have its summary.
+                      Summary: SUMMARY
+                      Every scenario will be separated like this :
+                      Title: Title of that scenario
+                      TEXT
+                      ===
+                      Title: Title of that scenario
+                      TEXT
+                      ===
+                      Title: Title of that scenario
+                      TEXT
+                      ===
+                      Title: Title of that scenario
+                      TEXT
+                      ===
+                      Title: Title of that scenario
+                      TEXT
+                      ===
+                      Title: Title of that scenario
+                      TEXT
+                      ===`,
         },
         { role: "user", content: `Age: ${ageRange}` },
         { role: "user", content: `Genre: ${genre}` },
-        { role: "user", content: `Prompt: ${prompt}` },
+        {
+          role: "user",
+          content: `Prompt: Generate a story based on the following parameters.`,
+        },
         { role: "assistant", content: "Generate scenario 2." },
         { role: "assistant", content: "Generate scenario 3." },
         { role: "assistant", content: "Generate scenario 4." },
@@ -104,7 +111,6 @@ const createNewStory = async (req, res) => {
 
     console.log("OpenAI Response:", response);
 
-    // Extract story name and summary
     const nameMatch = response.choices[0].message.content.match(
       /Story name: (.*?)(?=\n)/
     );
@@ -126,13 +132,35 @@ const createNewStory = async (req, res) => {
       if (title && text) {
         const response = await openai.images.generate({
           model: "dall-e-3",
-          prompt: `Generate me Digital Disney 3D style image based on next scenario: ${text}`,
+          prompt: `Generate a Digital Disney 3D-style image based on the following scenario: ${text}. Ensure that the image strictly adheres to the specified style.`,
           n: 1,
           size: "1792x1024",
         });
-        console.log(response);
 
-        scenarios.push({ title, text, image: response.data[0].url });
+        const imageUrl = response.data[0].url;
+        const imageName = `image_${title
+          .replace(/\s+/g, "_")
+          .toLowerCase()}.jpg`;
+        const imagePath = path.join(
+          __dirname,
+          "..",
+          "..",
+          "client",
+          "public",
+          "images",
+          "stories",
+          imageName
+        );
+
+        console.log("Image Path:", imagePath);
+
+        const imageStream = fs.createWriteStream(imagePath);
+        const imageResponse = await axios.get(imageUrl, {
+          responseType: "stream",
+        });
+        imageResponse.data.pipe(imageStream);
+
+        scenarios.push({ title, text, image: `/images/stories/${imageName}` });
       }
     }
 

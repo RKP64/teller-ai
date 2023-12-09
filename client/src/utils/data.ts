@@ -32,6 +32,9 @@ export const genres = [
     genre: "Kids",
   }
 ];
+
+export const ageRange = ["1-10","10-15", "15-20","20+"]
+
 export const stepData = [
   {
     id: 1,

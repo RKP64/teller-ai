@@ -7,8 +7,13 @@ import Slider from "react-slick";
 import { genres } from "@/utils/data";
 import { genresSettings } from "@/utils/data";
 import Image from "next/image";
+import { IStory } from "@/interfaces/IStory";
 
-const Genres = () => {
+interface GenresProps {
+  stories: IStory[] | undefined;
+}
+
+const Genres = ({ stories }: GenresProps) => {
   return (
     <section className="container mx-auto my-16 px-8 lg:px-8 relative pb-12">
       <div>
@@ -26,7 +31,8 @@ const Genres = () => {
             {genres.slice(0, 4).map((data, i) => (
               <div
                 key={i}
-                className="border rounded border-solid border-gray-400 px-3 py-2 hover:bg-primaryColor duration-300 text-white cursor-pointer">
+                className="border rounded border-solid border-gray-400 px-3 py-2 hover:bg-primaryColor duration-300 text-white cursor-pointer"
+              >
                 {data.genre}
               </div>
             ))}
@@ -35,7 +41,8 @@ const Genres = () => {
             {genres.slice(4, 7).map((data, i) => (
               <div
                 key={i}
-                className="border rounded border-solid border-gray-400 px-3 py-2 hover:bg-primaryColor duration-300 text-white cursor-pointer">
+                className="border rounded border-solid border-gray-400 px-3 py-2 hover:bg-primaryColor duration-300 text-white cursor-pointer"
+              >
                 {data.genre}
               </div>
             ))}
@@ -44,7 +51,8 @@ const Genres = () => {
             {genres.slice(7).map((data, i) => (
               <div
                 key={i}
-                className="border rounded border-solid border-gray-400 px-3 py-2 hover:bg-primaryColor duration-300 text-white cursor-pointer">
+                className="border rounded border-solid border-gray-400 px-3 py-2 hover:bg-primaryColor duration-300 text-white cursor-pointer"
+              >
                 {data.genre}
               </div>
             ))}
@@ -52,19 +60,19 @@ const Genres = () => {
         </div>
         <div className="mx-32 mt-[-10rem]">
           <Slider {...genresSettings}>
-            {genresData.map((data) => (
-              <div key={data.id}>
+            {stories?.map((data: IStory) => (
+              <div key={data._id}>
                 <Image
-                  src={data.image}
-                  className="object-cover w-full h-64 mb-6 rounded shadow-lg lg:h-80 xl:h-96"
-                  alt={data.title}
+                  src={data.scenarios[0].image}
+                  className="object-cover w-full h-64 mb-6 rounded shadow-lg lg:h-80 xl:h-96 opacity-80"
+                  alt={data.name}
                   height={1000}
                   width={1000}
                 />
                 <h5 className="mb-2 text-xl text-white font-bold leading-none sm:text-2xl">
-                  {data.title}
+                  {data.name}
                 </h5>
-                <p className="text-white">{data.paragraph}</p>
+                <p className="text-white">{data.summary}</p>
               </div>
             ))}
           </Slider>

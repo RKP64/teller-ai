@@ -16,7 +16,11 @@ import Image from "next/image";
 export default function BarberMenu() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-  const menuItems = ["Home", "About Us", "Services", "Gallery", "Contact"];
+  const menuItems = [
+    { name: "Home", link: "/home" },
+    { name: "Stories", link: "/stories" },
+    { name: "Contact us", link: "/contact" },
+  ];
 
   return (
     <Navbar
@@ -39,10 +43,10 @@ export default function BarberMenu() {
           <NavbarItem key={i}>
             <Link
               color="foreground"
-              href="#"
+              href={item.link}
               className="text-white hover:border-solid hover:border-b hover:border-primaryColor transition-all duration-300 font-dmsans"
             >
-              {item}
+              {item.name}
             </Link>
           </NavbarItem>
         ))}
@@ -69,10 +73,10 @@ export default function BarberMenu() {
                   : "foreground"
               }
               className="w-full"
-              href="#"
+              href={item.link}
               size="lg"
             >
-              {item}
+              {item.name}
             </Link>
           </NavbarMenuItem>
         ))}

@@ -1,12 +1,17 @@
 "use client";
 
 import React from "react";
-import { popularData } from "@/utils/data";
 import { popularSettings } from "@/utils/data";
 import Slider from "react-slick";
 import Image from "next/image";
+import { IStory } from "@/interfaces/IStory";
+import Link from "next/link";
 
-const Popular = () => {
+interface PopularProps {
+  stories: IStory[] | undefined;
+}
+
+const Popular = ({ stories }: PopularProps) => {
   return (
     <section className="container mx-auto px-8 my-24 lg:px-8 relative">
       <div className="flex flex-col">
@@ -17,26 +22,26 @@ const Popular = () => {
         </p>
       </div>
       <Slider {...popularSettings}>
-        {popularData.map((data) => (
-          <a href="/" aria-label="View Item" key={data.id}>
+        {stories?.map((data: IStory) => (
+          <Link href="/" aria-label="View Item" key={data._id}>
             <div className="relative overflow-hidden transition duration-200 transform rounded shadow-lg hover:-translate-y-2 hover:shadow-2xl m-2">
               <Image
-                src={data.image}
-                className="object-cover w-full h-56 md:h-64 xl:h-80"
+                src={data.scenarios[0].image}
+                className="object-cover w-full h-56 md:h-64 xl:h-80 opacity-80"
                 height={1000}
                 width={1000}
-                alt={data.title}
+                alt={data.name}
               />
               <div className="absolute inset-0 px-6 py-4 transition-opacity duration-200 bg-black bg-opacity-75 opacity-0 hover:opacity-100">
                 <p className="mb-4 text-lg font-bold text-gray-100">
-                  {data.title}
+                  {data.name}
                 </p>
                 <p className="text-sm tracking-wide text-gray-300">
-                  {data.paragraph}
+                  {data.summary}
                 </p>
               </div>
             </div>
-          </a>
+          </Link>
         ))}
       </Slider>
     </section>
