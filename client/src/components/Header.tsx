@@ -6,7 +6,6 @@ import Slider from "react-slick";
 import { FaStar } from "react-icons/fa6";
 import Image from "next/image";
 import { headerSettings } from "@/utils/data";
-import { headerData } from "@/utils/data";
 import { IScenario, IStory } from "@/interfaces/IStory";
 import { shuffle } from "@/utils/shuffle";
 import { calculateReadingTime } from "@/utils/utils";
@@ -66,7 +65,6 @@ const Header = ({ stories }: HeaderProps) => {
                 shuffledStories.map((data: IStory) => {
                   let title = data.name;
                   let words = title.split(" ");
-                  let lastWord = words[words.length - 1];
                   const createdAt = new Date(data.createdAt);
                   const date = createdAt.toISOString().split("T")[0];
 
@@ -87,8 +85,18 @@ const Header = ({ stories }: HeaderProps) => {
                     >
                       <div className="flex flex-col gap-4 mb-6">
                         <h3 className="text-2xl font-bold">
-                          {data.name.split(" ")[0]}{" "}
-                          <span className="text-primaryColor">{lastWord}</span>
+                          {words &&
+                            words.map((word: string, index: number) => (
+                              <span
+                                key={index}
+                                className={
+                                  index === 1 ? "text-primaryColor" : ""
+                                }
+                              >
+                                {word}
+                                {index !== words.length - 1 && " "}{" "}
+                              </span>
+                            ))}
                         </h3>
                         <p className="text-gray-400">Date: {date}</p>
                         <p className="text-gray-400">
