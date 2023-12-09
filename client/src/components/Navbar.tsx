@@ -17,8 +17,9 @@ export default function BarberMenu() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const menuItems = [
-    { name: "Home", link: "/home" },
+    { name: "Home", link: "/" },
     { name: "Stories", link: "/stories" },
+    { name: "Categories", link: "/categories" },
     { name: "Contact us", link: "/contact" },
   ];
 
