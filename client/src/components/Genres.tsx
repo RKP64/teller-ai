@@ -1,5 +1,5 @@
 import React from "react";
-import { genres } from "@/utils/Data";
+import { genres } from "@/utils/data";
 import PageTitle from "@/utils/PageTitle";
 
 const Genres = () => {
@@ -20,7 +20,8 @@ const Genres = () => {
             {genres.slice(0, 4).map((data, i) => (
               <div
                 key={i}
-                className="border rounded border-solid border-gray-400 px-3 py-2 hover:bg-primaryColor duration-300 text-white cursor-pointer">
+                className="border rounded border-solid border-gray-400 px-3 py-2 hover:bg-primaryColor duration-300 text-white cursor-pointer"
+              >
                 {data.genre}
               </div>
             ))}
@@ -29,7 +30,8 @@ const Genres = () => {
             {genres.slice(4, 7).map((data, i) => (
               <div
                 key={i}
-                className="border rounded border-solid border-gray-400 px-3 py-2 hover:bg-primaryColor duration-300 text-white cursor-pointer">
+                className="border rounded border-solid border-gray-400 px-3 py-2 hover:bg-primaryColor duration-300 text-white cursor-pointer"
+              >
                 {data.genre}
               </div>
             ))}
@@ -38,7 +40,8 @@ const Genres = () => {
             {genres.slice(7).map((data, i) => (
               <div
                 key={i}
-                className="border rounded border-solid border-gray-400 px-3 py-2 hover:bg-primaryColor duration-300 text-white cursor-pointer">
+                className="border rounded border-solid border-gray-400 px-3 py-2 hover:bg-primaryColor duration-300 text-white cursor-pointer"
+              >
                 {data.genre}
               </div>
             ))}
@@ -47,7 +50,8 @@ const Genres = () => {
         <div className="mx-32">
           <div
             id="geners-carousel"
-            className="text-white px-[53px] border border-solid border-gray-400">
+            className="text-white px-[53px] border border-solid border-gray-400"
+          >
             <div id="opacity"></div>
             <div className="flex">
               <div className="flex flex-col gap-4">

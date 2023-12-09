@@ -1,29 +1,31 @@
 "use client";
 
-import { genres } from "@/utils/data";
+import { ageRange } from "@/utils/data";
 import { Dispatch, SetStateAction } from "react";
 
-interface GenreFilter {
-  genre: string;
-  setGenre: Dispatch<SetStateAction<string>>;
+interface AgeRangeFilterProps {
+  age: string;
+  setAgeRange: Dispatch<SetStateAction<string>>;
 }
 
-const GenreFilter = ({ genre, setGenre }: GenreFilter) => {
+const AgeRangeFilter = ({ age, setAgeRange }: AgeRangeFilterProps) => {
   return (
     <div className="mt-40">
-      <h1 className="text-white text-5xl font-bold mb-8">Available Genres</h1>
+      <h1 className="text-white text-5xl font-bold mb-8">
+        Available Age Ranges
+      </h1>
       <div className="gap-x-16 flex flex-wrap gap-y-4">
-        {genres.map((genreArr) => (
+        {ageRange.map((ageArr) => (
           <button
-            key={genreArr.id}
-            onClick={() => setGenre(genreArr.genre)}
+            onClick={() => setAgeRange(ageArr)}
+            key={ageArr}
             className={`rounded-lg text-xl border px-8 py-4 ${
-              genre === genreArr.genre
+              age === ageArr
                 ? "text-white bg-primaryColor border-gray-600 hover:border-white hover:text-white"
                 : "text-gray-400 border-gray-600 hover:border-primaryColor hover:text-primaryColor"
             } transition duration-500`}
           >
-            {genreArr.genre}
+            {ageArr}
           </button>
         ))}
       </div>
@@ -31,4 +33,4 @@ const GenreFilter = ({ genre, setGenre }: GenreFilter) => {
   );
 };
 
-export default GenreFilter;
+export default AgeRangeFilter;

@@ -1,10 +1,25 @@
 "use client";
 
 import BackButton from "@/components/BackButton";
+import AgeRangeFilter from "@/components/Filters/AgeRange";
 import GenreFilter from "@/components/Filters/Genre";
 import Header from "@/components/Filters/Header";
+import UserPrompt from "@/components/Filters/UserPrompt";
+import { useState } from "react";
 
 const CreateStoryPage = () => {
+  const [step, setStep] = useState<number>(1);
+  const [genre, setGenre] = useState<string>("");
+  const [ageRange, setAgeRange] = useState<string>("");
+  const [userPrompt, setUserPrompt] = useState<string>("");
+
+  const handleNextStep = (step: number) => {
+    setStep(step);
+    if (step > 3) {
+      return true;
+    }
+  };
+
   return (
     <div className="h-screen">
       <section className="relative overflow-hidden">
@@ -30,10 +45,26 @@ const CreateStoryPage = () => {
                   />
                 </svg>
               </div>
-              <Header genre={true} ageRange={false} prompt={false} />
-              <GenreFilter />
+              <Header
+                genre={true}
+                ageRange={step === 2 || step === 3 ? true : false}
+                prompt={step === 3 ? true : false}
+              />
+              {step === 1 && <GenreFilter genre={genre} setGenre={setGenre} />}
+              {step === 2 && (
+                <AgeRangeFilter age={ageRange} setAgeRange={setAgeRange} />
+              )}
+              {step === 3 && (
+                <UserPrompt
+                  userPrompt={userPrompt}
+                  setUserPrompt={setUserPrompt}
+                />
+              )}
               <div className="mt-40 flex items-end">
-                <button className="bg-primaryColor text-white px-14 py-4 text-2xl rounded-lg shadow-md shadow-primaryColor hover:bg-primaryColor/80 transition duration-500 hover:text-white/80 ml-auto">
+                <button
+                  onClick={() => handleNextStep(step + 1)}
+                  className="bg-primaryColor text-white px-14 py-4 text-2xl rounded-lg shadow-md shadow-primaryColor hover:bg-primaryColor/80 transition duration-500 hover:text-white/80 ml-auto"
+                >
                   Next
                 </button>
               </div>

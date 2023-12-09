@@ -13,7 +13,7 @@ const Header = ({ genre, ageRange, prompt }: HeaderProps) => {
         <div
           className={`flex items-center justify-center w-16 h-16 mx-auto ${
             genre
-              ? "bg-primaryColor border-2 border-primaryColor"
+              ? "bg-primaryColor border-2 border-primaryColor shadow-md shadow-primaryColor"
               : "bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700"
           } rounded-full shadow`}
         >
@@ -32,7 +32,7 @@ const Header = ({ genre, ageRange, prompt }: HeaderProps) => {
         <div
           className={`flex items-center justify-center w-16 h-16 mx-auto ${
             ageRange
-              ? "bg-primaryColor border-2 border-primaryColor"
+              ? "bg-primaryColor border-2 border-primaryColor shadow-md shadow-primaryColor"
               : "bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700"
           } rounded-full shadow`}
         >
@@ -51,7 +51,7 @@ const Header = ({ genre, ageRange, prompt }: HeaderProps) => {
         <div
           className={`flex items-center justify-center w-16 h-16 mx-auto ${
             prompt
-              ? "bg-primaryColor border-2 border-primaryColor"
+              ? "bg-primaryColor border-2 border-primaryColor shadow-md shadow-primaryColor"
               : "bg-white dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-700"
           } rounded-full shadow`}
         >
