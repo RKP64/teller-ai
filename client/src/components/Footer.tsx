@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export const Footer = () => {
   return (
-    <section className="container mx-auto px-8 lg:px-8 relative">
+    <section className="container mx-auto mt-24 px-8 lg:px-8 relative">
       <div className="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
         <div className="sm:col-span-2">
           <a

@@ -1,28 +1,16 @@
 import React from "react";
+import { stepData } from "@/utils/Data";
 
 const Step = () => {
-  const stepData = [
-    {
-      id: 1,
-      title: "Step 1",
-      paragraph:
-        "All recipes are written using certain conventions, which define the characteristics of common ingredients. The rules vary from place to place.",
-    },
-    {
-      id: 2,
-      title: "Step 2",
-      paragraph:
-        "All recipes are written using certain conventions, which define the characteristics of common ingredients. The rules vary from place to place.",
-    },
-    {
-      id: 3,
-      title: "Step 3",
-      paragraph:
-        "All recipes are written using certain conventions, which define the characteristics of common ingredients. The rules vary from place to place.",
-    },
-  ];
   return (
-    <section className="container mx-auto my-16 px-8 lg:px-8 relative pb-12">
+    <section className="container mx-auto my-24 px-8 lg:px-8 relative pb-12">
+      <div className="flex flex-col">
+        <h1 className="text-5xl text-primaryColor font-bold">Steps</h1>
+        <p className="text-gray-400 max-w-[500px] mb-8 text-[17px] mt-4">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        </p>
+      </div>
       <div>
         <div className="grid gap-6 row-gap-10 lg:grid-cols-2">
           <div className="lg:py-6 lg:pr-16">

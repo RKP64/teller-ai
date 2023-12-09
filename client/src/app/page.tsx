@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Genres from "@/components/Genres";
 import Step from "@/components/Step";
 import { Footer } from "@/components/Footer";
+import Popular from "@/components/Popular";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <Navbar />
       <Header />
       <Genres />
+      <Popular />
       <Step />
       <Footer />
     </div>

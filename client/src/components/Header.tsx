@@ -5,59 +5,10 @@ import Link from "next/link";
 import Slider from "react-slick";
 import { FaStar } from "react-icons/fa6";
 import Image from "next/image";
-import slika1 from "@/resources/slika1.jpg";
-import slika2 from "@/resources/slika2.jpg";
-import slika3 from "@/resources/slika3.jpg";
+import { headerSettings } from "@/utils/Data";
+import { headerData } from "@/utils/Data";
 
 const Header = () => {
-  const data = [
-    {
-      id: 1,
-      title: "Christopher Robin",
-      date: "2018-08-03",
-      time: "2h 7min",
-      stars: [1, 2, 3, 4, 5],
-      pararagraph:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      gallery: [
-        {
-          id: 1,
-          image: slika1,
-        },
-        {
-          id: 2,
-          image: slika2,
-        },
-        {
-          id: 3,
-          image: slika3,
-        },
-      ],
-    },
-    {
-      id: 2,
-      title: "Title2",
-    },
-    {
-      id: 3,
-      title: "Title3",
-    },
-  ];
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
-  const settings2 = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 2,
-    slidesToScroll: 2,
-  };
   return (
     <section className="container mx-auto my-16 px-8 lg:px-8 relative">
       <div className="grid grid-cols-2">
@@ -83,9 +34,8 @@ const Header = () => {
           </div>
         </div>
         <div className="px-[90px] ml-16 mb-12">
-          <Slider {...settings}>
-            {data.map((data) => {
-              console.log(data.title.split(" "));
+          <Slider {...headerSettings}>
+            {headerData.map((data) => {
               let title = data.title;
               let words = title.split(" ");
               let lastWord = words[words.length - 1];

@@ -1,6 +1,10 @@
+"use client";
+
 import React from "react";
 import { genres } from "@/utils/Data";
-import PageTitle from "@/utils/PageTitle";
+import Slider from "react-slick";
+import { genresSettings } from "@/utils/Data";
+import { genresData } from "@/utils/Data";
 
 const Genres = () => {
   return (
@@ -44,27 +48,22 @@ const Genres = () => {
             ))}
           </div>
         </div>
-        <div className="mx-32">
-          <div
-            id="geners-carousel"
-            className="text-white px-[53px] border border-solid border-gray-400">
-            <div id="opacity"></div>
-            <div className="flex">
-              <div className="flex flex-col gap-4">
-                <h3 className="text-4xl font-bold">Traktor tom</h3>
-                <span className="text-gray-400 text-xl mb-4">Dječiji</span>
+        <div className="mx-32 mt-[-10rem]">
+          <Slider {...genresSettings}>
+            {genresData.map((data) => (
+              <div>
+                <img
+                  className="object-cover w-full h-64 mb-6 rounded shadow-lg lg:h-80 xl:h-96"
+                  src={data.image}
+                  alt=""
+                />
+                <h5 className="mb-2 text-xl text-white font-bold leading-none sm:text-2xl">
+                  {data.title}
+                </h5>
+                <p className="text-white">{data.paragraph}</p>
               </div>
-              <div className="flex items-center">
-                <span className="text-primaryColor">8-12</span>
-              </div>
-            </div>
-
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Obcaecati ipsa cupiditate neque doloribus quod porro, quas ad
-              aperiam excepturi quis!
-            </p>
-          </div>
+            ))}
+          </Slider>
         </div>
       </div>
     </section>
