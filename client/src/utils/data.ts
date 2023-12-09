@@ -13,7 +13,7 @@ export const genres = [
   },
   {
     id: 4,
-    genre: "Romancy",
+    genre: "Adventure",
   },
   {
     id: 5,

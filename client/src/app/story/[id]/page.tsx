@@ -57,7 +57,6 @@ const StoryPage = () => {
         backgroundImage: `url('${story?.scenarios[currentStep].image}')`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
-        height: "100vh",
       }}
       className={`crossfade relative`}>
       <audio
@@ -69,15 +68,15 @@ const StoryPage = () => {
 
       <div id="opacity-fade"></div>
       <div id="opacity-story"></div>
-      <div className="absolute right-10 top-6">
+      <div className="absolute right-10 top-6 z-[323232]">
         {soundMuted ? (
           <GoMute
-            className="text-white/80 hover:text-white transition duration-500 cursor-pointer w-12 h-12"
+            className="text-white/80 hover:text-white transition duration-500 cursor-pointer w-12 h-12 z-30"
             onClick={() => setSoundMuted(!soundMuted)}
           />
         ) : (
           <GoUnmute
-            className="text-white/80 hover:text-white transition duration-500 cursor-pointer w-12 h-12"
+            className="text-white/80 hover:text-white transition duration-500 cursor-pointer w-12 h-12 z-30"
             onClick={() => setSoundMuted(!soundMuted)}
           />
         )}

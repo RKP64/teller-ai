@@ -59,7 +59,7 @@ const Header = ({ stories }: HeaderProps) => {
             </p>
             <div>
               <Link
-                href={`/story/${shuffledStories[0]?._id}`}
+                href={`/story/${shuffledStories && shuffledStories[0]?._id}`}
                 className="text-white font-bold bg-gray-400/80 flex items-center max-w-max rounded-xl shadow-lg shadow-gray-400 p-4 hover:bg-gray-400 duration-300">
                 <IoPlaySharp className="mr-1 font-bold w-6 h-6" /> Play a story
               </Link>
