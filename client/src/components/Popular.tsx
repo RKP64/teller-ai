@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { popularData } from "@/utils/Data";
-import { popularSettings } from "@/utils/Data";
+import { popularData } from "@/utils/data";
+import { popularSettings } from "@/utils/data";
 import Slider from "react-slick";
 
 const Popular = () => {

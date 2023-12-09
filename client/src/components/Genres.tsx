@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
-import { genresData } from "@/utils/Data";
+import { genresData } from "@/utils/data";
 import PageTitle from "@/utils/PageTitle";
 import Slider from "react-slick";
-import { genres } from "@/utils/Data";
-import { genresSettings } from "@/utils/Data";
+import { genres } from "@/utils/data";
+import { genresSettings } from "@/utils/data";
 
 const Genres = () => {
   return (

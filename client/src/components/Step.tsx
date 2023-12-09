@@ -1,5 +1,5 @@
 import React from "react";
-import { stepData } from "@/utils/Data";
+import { stepData } from "@/utils/data";
 
 const Step = () => {
   return (
