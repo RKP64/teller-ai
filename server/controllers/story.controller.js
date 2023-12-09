@@ -178,7 +178,7 @@ const createNewStory = async (req, res) => {
 
         const mp3 = await openai.audio.speech.create({
           model: "tts-1",
-          voice: narrator,
+          voice: narrator ? narrator : "nova",
           input: text,
           speed: "1.0",
         });
