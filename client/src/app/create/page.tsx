@@ -5,7 +5,9 @@ import AgeRangeFilter from "@/components/Filters/AgeRange";
 import GenreFilter from "@/components/Filters/Genre";
 import Header from "@/components/Filters/Header";
 import UserPrompt from "@/components/Filters/UserPrompt";
+import StoryAPI, { CreateStoryParams } from "@/interceptor/Story/Story";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const CreateStoryPage = () => {
   const [step, setStep] = useState<number>(1);
@@ -13,11 +15,24 @@ const CreateStoryPage = () => {
   const [ageRange, setAgeRange] = useState<string>("");
   const [userPrompt, setUserPrompt] = useState<string>("");
 
-  const handleNextStep = (step: number) => {
-    setStep(step);
+  const handleNextStep = async (step: number) => {
     if (step > 3) {
+      console.log(step, genre, ageRange, userPrompt);
+      try {
+        const storyParams: CreateStoryParams = {
+          genre,
+          ageRange,
+          prompt: userPrompt,
+        };
+        await StoryAPI.createStory(storyParams);
+        toast.success("Successfully generated new story.");
+      } catch (error) {
+        toast.error("An error occured while generating story.");
+      }
+
       return true;
     }
+    setStep(step);
   };
 
   return (
