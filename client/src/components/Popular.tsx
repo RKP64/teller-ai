@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { popularData } from "@/utils/data";
 import { popularSettings } from "@/utils/data";
 import Slider from "react-slick";
 import Image from "next/image";
@@ -28,7 +27,7 @@ const Popular = ({ stories }: PopularProps) => {
             <div className="relative overflow-hidden transition duration-200 transform rounded shadow-lg hover:-translate-y-2 hover:shadow-2xl m-2">
               <Image
                 src={data.scenarios[0].image}
-                className="object-cover w-full h-56 md:h-64 xl:h-80"
+                className="object-cover w-full h-56 md:h-64 xl:h-80 opacity-80"
                 height={1000}
                 width={1000}
                 alt={data.name}

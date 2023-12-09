@@ -14,7 +14,7 @@ export default function Home() {
     <>
       <Navbar />
       <Header />
-      <Genres />
+      <Genres stories={stories} />
       <Popular stories={stories} />
       <Step />
       <Footer />
