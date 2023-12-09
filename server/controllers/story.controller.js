@@ -109,7 +109,19 @@ const createNewStory = async (req, res) => {
                       ===
                       Title: Title of that scenario
                       TEXT
-                      ===`,
+                      ===
+                      In text do not include:
+                      Hate: hateful symbols, negative stereotypes, comparing certain groups to animals/objects, or otherwise expressing or promoting hate based on identity.
+                      Harassment: mocking, threatening, or bullying an individual.
+                      Violence: violent acts and the suffering or humiliation of others.
+                      Self-harm: suicide, cutting, eating disorders, and other attempts at harming oneself.
+                      Sexual: nudity, sexual acts, sexual services, or content otherwise meant to arouse sexual excitement.
+                      Shocking: bodily fluids, obscene gestures, or other profane subjects that may shock or disgust.
+                      Illegal activity: drug use, theft, vandalism, and other illegal activities.
+                      Deception: major conspiracies or events related to major ongoing geopolitical events.
+                      Political: politicians, ballot-boxes, protests, or other content that may be used to influence the political process or to campaign.
+                      Public and personal health: the treatment, prevention, diagnosis, or transmission of diseases, or people experiencing health ailments.
+                      Spam: unsolicited bulk content.`,
         },
         { role: "user", content: `Age: ${ageRange}` },
         { role: "user", content: `Genre: ${genre}` },
