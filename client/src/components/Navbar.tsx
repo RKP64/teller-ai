@@ -21,22 +21,23 @@ export default function BarberMenu() {
     { name: "Home", link: "/" },
     { name: "Stories", link: "/stories" },
     { name: "Categories", link: "/categories" },
-    { name: "Contact us", link: "/contact" },
+    { name: "About Us", link: "#steps" },
   ];
 
   return (
     <Navbar
       onMenuOpenChange={setIsMenuOpen}
       id="nav-menu"
-      className="text-white bg-transparent"
-    >
+      className="text-white bg-transparent">
       <NavbarContent>
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden"
         />
         <NavbarBrand>
-          <Image src="/images/logo.png" alt="logo" width={100} height={100} />
+          <Link href="/" className="hover:bg-none hover:opacity-1">
+            <Image src="/images/logo.png" alt="logo" width={100} height={100} />
+          </Link>
         </NavbarBrand>
       </NavbarContent>
 
@@ -46,8 +47,7 @@ export default function BarberMenu() {
             <Link
               color="foreground"
               href={item.link}
-              className="text-white hover:border-solid hover:border-b hover:border-primaryColor transition-all duration-300 font-dmsans"
-            >
+              className="text-white hover:border-solid hover:border-b hover:border-primaryColor transition-all duration-300 font-dmsans">
               {item.name}
             </Link>
           </NavbarItem>
@@ -57,8 +57,7 @@ export default function BarberMenu() {
         <NavbarItem>
           <Link
             href="/create"
-            className="flex items-center rounded-full border-2 border-solid border-gray-500 px-4 py-2 text-[#fff] text-sm hover:bg-white hover:text-black cursor-pointer transition duration-500"
-          >
+            className="flex items-center rounded-full border-2 border-solid border-gray-500 px-4 py-2 text-[#fff] text-sm hover:bg-white hover:text-black cursor-pointer transition duration-500">
             <IoAdd className="mr-1" /> Create a story
           </Link>
         </NavbarItem>
@@ -76,8 +75,7 @@ export default function BarberMenu() {
               }
               className="w-full"
               href={item.link}
-              size="lg"
-            >
+              size="lg">
               {item.name}
             </Link>
           </NavbarMenuItem>

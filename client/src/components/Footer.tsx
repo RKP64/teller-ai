@@ -28,38 +28,29 @@ export const Footer = () => {
           <p className="text-base font-bold tracking-wide text-white mb-4">
             Pages
           </p>
-          <div className="flex">
-            <p className="mr-1 text-white">Phone:</p>
-            <a
-              href="tel:850-123-5021"
-              aria-label="Our phone"
-              title="Our phone"
-              className="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple text-white">
-              850-123-5021
-            </a>
-          </div>
-          <div className="flex">
-            <p className="mr-1 text-white">Email:</p>
-            <a
-              href="mailto:info@lorem.mail"
-              aria-label="Our email"
-              title="Our email"
-              className="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple text-white">
-              info@lorem.mail
-            </a>
-          </div>
-          <div className="flex">
-            <p className="mr-1 text-white">Address:</p>
-            <a
-              href="https://www.google.com/maps"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Our address"
-              title="Our address"
-              className="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple text-white">
-              312 Lovely Street, NY
-            </a>
-          </div>
+          <ul className="flex flex-col gap-4">
+            <li>
+              <a
+                href="/"
+                className="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple text-white hover:text-primaryColor">
+                Home
+              </a>
+            </li>
+            <li>
+              <a
+                href="/"
+                className="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple text-white hover:text-primaryColor">
+                Stories
+              </a>
+            </li>
+            <li>
+              <a
+                href="/"
+                className="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple text-white hover:text-primaryColor">
+                Contact Us
+              </a>
+            </li>
+          </ul>
         </div>
         <div>
           <span className="text-base font-bold tracking-wide text-white mb-4">
@@ -90,38 +81,18 @@ export const Footer = () => {
             </a>
           </div>
           <p className="mt-4 text-sm text-white">
-            Bacon ipsum dolor amet short ribs pig sausage prosciutto chicken
-            spare ribs salami.
+            Unleash your creativity with Teller and turn your ideas into
+            reality. Explore a world of limitless imagination within our
+            creative sanctuary.
           </p>
         </div>
       </div>
       <div className="flex flex-col-reverse justify-between pt-5 pb-10 border-t lg:flex-row">
         <p className="text-sm text-white">
-          © Copyright 2023 Lorem Inc. All rights reserved.
+          © Copyright 2023{" "}
+          <span className="text-primaryColor">Salt Valley.</span> All rights
+          reserved.
         </p>
-        <ul className="flex flex-col mb-3 space-y-2 lg:mb-0 sm:space-y-0 sm:space-x-5 sm:flex-row">
-          <li>
-            <a
-              href="/"
-              className="text-sm text-white transition-colors duration-300 hover:text-deep-purple-accent-400">
-              F.A.Q
-            </a>
-          </li>
-          <li>
-            <a
-              href="/"
-              className="text-sm text-white-600 transition-colors duration-300 hover:text-deep-purple-accent-400">
-              Privacy Policy
-            </a>
-          </li>
-          <li>
-            <a
-              href="/"
-              className="text-sm text-white-600 transition-colors duration-300 hover:text-deep-purple-accent-400">
-              Terms &amp; Conditions
-            </a>
-          </li>
-        </ul>
       </div>
     </section>
   );

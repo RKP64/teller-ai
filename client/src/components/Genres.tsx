@@ -14,6 +14,7 @@ interface GenresProps {
 }
 
 const Genres = ({ stories }: GenresProps) => {
+  const maxLength = 333;
   useEffect(() => {
     AOS.init();
   }, []);
@@ -60,21 +61,27 @@ const Genres = ({ stories }: GenresProps) => {
         </div>
         <div className="mt-8 lg:ml-32 lg:mt-[-10rem]">
           <Slider {...genresSettings}>
-            {stories?.map((data: IStory) => (
-              <Link key={data._id} href={`/story/${data._id}`}>
-                <Image
-                  src={data.scenarios[0].image}
-                  className="object-cover w-full h-64 mb-6 rounded shadow-lg lg:h-80 xl:h-96 opacity-80"
-                  alt={data.name}
-                  height={1000}
-                  width={1000}
-                />
-                <h5 className="mb-2 text-xl text-white font-bold leading-none sm:text-2xl">
-                  {data.name}
-                </h5>
-                <p className="text-white">{data.summary}</p>
-              </Link>
-            ))}
+            {stories?.map((data: IStory) => {
+              return (
+                <Link key={data._id} href={`/story/${data._id}`}>
+                  <Image
+                    src={data.scenarios[0].image}
+                    className="object-cover w-full h-64 mb-6 rounded shadow-lg lg:h-80 xl:h-96 opacity-80"
+                    alt={data.name}
+                    height={1000}
+                    width={1000}
+                  />
+                  <h5 className="mb-2 text-xl text-white font-bold leading-none sm:text-2xl">
+                    {data.name}
+                  </h5>
+                  <p className="text-white">
+                    {data.summary.length > maxLength
+                      ? `${data.summary.substring(0, maxLength)}...`
+                      : data.summary}
+                  </p>
+                </Link>
+              );
+            })}
           </Slider>
         </div>
       </div>

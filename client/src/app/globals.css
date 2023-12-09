@@ -120,6 +120,8 @@ body {
 #header-item {
   backdrop-filter: blur(15px);
   background: rgb(0 30 43 / 40%);
+  height: 690px;
+  margin-bottom: 2rem;
 }
 /* Spinner */
 .loadingSpinnerContainer {
@@ -139,7 +141,7 @@ body {
   width: 64px;
   height: 64px;
   border: 8px solid;
-  border-color: rgb(10, 77, 107) transparent rgb(10, 77, 107) transparent;
+  border-color: #57b688 transparent #57b688 transparent;
   border-radius: 50%;
   animation: spin 1.2s linear infinite;
 }
@@ -151,11 +153,11 @@ body {
     transform: rotate(360deg);
   }
 }
-@media (min-width: 1000px) {
+/* @media (min-width: 1000px) {
   .slick-dots {
     display: none !important;
   }
-}
+} */
 @media (max-width: 1000px) {
   #nav-menu header {
     max-width: 950px !important;

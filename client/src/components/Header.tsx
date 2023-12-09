@@ -9,7 +9,7 @@ import { headerSettings } from "@/utils/data";
 import { IScenario, IStory } from "@/interfaces/IStory";
 import { shuffle } from "@/utils/shuffle";
 import { calculateReadingTime } from "@/utils/utils";
-import { IoAdd } from "react-icons/io5";
+import { IoPlaySharp } from "react-icons/io5";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -61,7 +61,7 @@ const Header = ({ stories }: HeaderProps) => {
               <Link
                 href={"/create"}
                 className="text-white font-bold bg-gray-400/80 flex items-center max-w-max rounded-xl shadow-lg shadow-gray-400 p-4 hover:bg-gray-400 duration-300">
-                <IoAdd className="mr-1 font-bold w-6 h-6" /> Generate story
+                <IoPlaySharp className="mr-1 font-bold w-6 h-6" /> Play a story
               </Link>
             </div>
           </div>
@@ -89,7 +89,7 @@ const Header = ({ stories }: HeaderProps) => {
                       key={data._id}
                       id="header-item"
                       href={`/story/${data._id}`}
-                      className="text-white border border-solid border-gray-400 p-[20px] rounded-lg">
+                      className="text-white border border-solid border-[#142630] p-[20px] rounded-lg">
                       <div className="flex flex-col gap-4 mb-6">
                         <h3 className="text-2xl font-bold">
                           {words &&
