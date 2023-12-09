@@ -243,12 +243,23 @@ const createNewStory = async (req, res) => {
  * @swagger
  * /api/story:
  *   get:
- *     summary: Get all stories
- *     description: Retrieve all stories from the database.
+ *     summary: Get stories with optional filters
+ *     description: Retrieve stories from the database with optional filters.
  *     tags: [Stories]
+ *     parameters:
+ *       - in: query
+ *         name: ageRange
+ *         schema:
+ *           type: string
+ *         description: Filter stories by age range.
+ *       - in: query
+ *         name: genre
+ *         schema:
+ *           type: string
+ *         description: Filter stories by genre.
  *     responses:
  *       200:
- *         description: Successfully retrieved all stories
+ *         description: Successfully retrieved stories
  *         content:
  *           application/json:
  *             example:
@@ -279,7 +290,20 @@ const createNewStory = async (req, res) => {
 
 const getAllStories = async (req, res) => {
   try {
-    const stories = await Story.find().sort({ createdAt: -1 });
+    let query = {};
+
+    // Check for query parameters
+    if (req.query.ageRange) {
+      query.ageRange = req.query.ageRange;
+    }
+
+    if (req.query.genre) {
+      query.genre = req.query.genre;
+    }
+
+    // Add more conditions for other filters if needed
+
+    const stories = await Story.find(query).sort({ createdAt: -1 });
 
     res.status(200).json(stories);
   } catch (error) {

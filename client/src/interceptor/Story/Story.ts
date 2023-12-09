@@ -7,7 +7,7 @@ export interface CreateStoryParams {
   genre: string;
 }
 
-interface GetAllStoriesWithFilterParams {
+export interface GetAllStoriesWithFilterParams {
   genre?: string;
   ageRange?: string;
 }

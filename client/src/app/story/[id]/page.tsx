@@ -93,13 +93,17 @@ const StoryPage = () => {
           <div className="w-full">
             {story && (
               <div>
-                <h2 className="text-5xl font-bold text-white">
-                  {story.name.split(" ")[0]}{" "}
-                  <span className="text-primaryColor">
-                    {story.name.split(" ")[1]}
-                  </span>
+                <h2 className="text-5xl font-bold text-white drop-shadow-lg">
+                  {story.name.split(" ").map((word, index, wordsArray) =>
+                    index === wordsArray.length - 1 ? (
+                      <span key={index} className="text-primaryColor">
+                        {word}
+                      </span>
+                    ) : (
+                      <span key={index}>{word} </span>
+                    )
+                  )}
                 </h2>
-
                 <div className="mt-12 border backdrop-blur-md border-solid border-black p-[33px] rounded-[15px]">
                   <p className="text-[26px] leading-normal text-white">
                     {story.scenarios[currentStep].text}

@@ -7,31 +7,38 @@ import Step from "@/components/Step";
 import { Footer } from "@/components/Footer";
 import Popular from "@/components/Popular";
 import useStories from "./hooks/useStory";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Spinner from "@/utils/Spinner";
 
 export default function Home() {
   const { stories, storiesLoading } = useStories();
+  const [selectedGenreFilter, setSelectedGenreFilter] = useState<string>("");
+  const { storiesWithFilters, storiesWithFiltersLoading } = useStories({
+    genre: selectedGenreFilter,
+  });
   const [loading, setLoading] = useState(true);
+
+  const memoizedHeader = useMemo(() => <Header stories={stories} />, [stories]);
 
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 1000);
   }, []);
 
-  if (loading) {
-    return (
-      <>
-        <Spinner />
-      </>
-    );
+  if (loading || storiesLoading || storiesWithFiltersLoading) {
+    return <Spinner />;
   }
+
   return (
     <>
       <Navbar />
-      <Header stories={stories} />
-      <Genres stories={stories} />
+      {memoizedHeader}
+      <Genres
+        stories={storiesWithFilters}
+        selectedGenre={selectedGenreFilter}
+        setSelectedGenreFilter={setSelectedGenreFilter}
+      />
       <Popular stories={stories} />
       <Step />
       <Footer />
