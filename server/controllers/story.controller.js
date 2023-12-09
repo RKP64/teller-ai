@@ -157,7 +157,7 @@ const createNewStory = async (req, res) => {
         });
         imageResponse.data.pipe(imageStream);
 
-        scenarios.push({ title, text, image: imageName });
+        scenarios.push({ title, text, image: `/images/${imageName}` });
       }
     }
 
