@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <Header />
+      <Header stories={stories} />
       <Genres stories={stories} />
       <Popular stories={stories} />
       <Step />
