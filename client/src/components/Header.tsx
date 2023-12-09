@@ -5,8 +5,9 @@ import Link from "next/link";
 import Slider from "react-slick";
 import { FaStar } from "react-icons/fa6";
 import Image from "next/image";
-import { headerData } from "@/utils/data";
 import { headerSettings } from "@/utils/data";
+import { headerData } from "@/utils/data";
+
 const Header = () => {
   return (
     <section className="container mx-auto my-16 px-8 lg:px-8 relative">
@@ -78,6 +79,8 @@ const Header = () => {
                             <Image
                               src={gallery.image}
                               alt="story"
+                              width={1000}
+                              height={1000}
                               style={{
                                 width: "100px",
                               }}

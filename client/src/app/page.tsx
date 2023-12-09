@@ -7,13 +7,13 @@ import Popular from "@/components/Popular";
 
 export default function Home() {
   return (
-    <div className="">
+    <>
       <Navbar />
       <Header />
       <Genres />
       <Popular />
       <Step />
       <Footer />
-    </div>
+    </>
   );
 }

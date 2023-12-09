@@ -1,5 +1,6 @@
 import React from "react";
 import { stepData } from "@/utils/data";
+import Image from "next/image";
 
 const Step = () => {
   return (
@@ -78,10 +79,12 @@ const Step = () => {
             </div>
           </div>
           <div className="relative">
-            <img
+            <Image
               className="inset-0 object-cover object-bottom w-full rounded shadow-lg h-96 lg:absolute lg:h-full"
               src="https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
               alt=""
+              height={1000}
+              width={1000}
             />
           </div>
         </div>
