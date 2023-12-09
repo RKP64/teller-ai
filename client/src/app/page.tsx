@@ -26,7 +26,7 @@ export default function Home() {
     }, 1000);
   }, []);
 
-  if (loading || storiesLoading || storiesWithFiltersLoading) {
+  if (loading || storiesLoading) {
     return <Spinner />;
   }
 
