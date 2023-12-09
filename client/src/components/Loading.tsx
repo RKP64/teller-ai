@@ -151,19 +151,24 @@ const LoadingPage = () => {
 
   return (
     <div className="absolute left-0 right-0 top-0 bottom-0 bg-[#001E2B] overflow-x-hidden">
-      <div className="pl-[4rem] md:pl-[7rem] pr-[7rem] pt-[5rem]">
+        <div className="h-[100vh] overflow-hidden absolute">
         <Image
           src={"./images/circle.svg"}
           alt="circle"
           width={1500}
           height={1500}
-          className="absolute opacity-40 max-h-[100vh] transition duration-800"
+          className="opacity-20 max-h-[100vh] transition duration-800 animate-ping"
         />
+        </div>
+      <div className="pl-[4rem] md:pr-[7rem] md:pl-[7rem] pr-[4rem] pt-[5rem]">
+        
 
         <h1 className="text-white text-4xl md:text-6xl font-black text-center leading-snug relative z-1">
           Generating your new
           <br />
-          beautiful <span className="text-primaryColor">story</span>
+          beautiful <span className="text-primaryColor">story<div className="w-max inline-flex">
+            <h1 className="animate-typing overflow-hidden whitespace-nowrap pr-1 text-5xl font-bold text-primaryColor">. . .</h1>
+            </div></span>
         </h1>
         <p className="text-gray-500 text-2xl mt-5 text-center">
           Your story must pass several phases, it will be finished in no time
