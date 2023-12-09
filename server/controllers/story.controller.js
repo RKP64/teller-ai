@@ -225,10 +225,11 @@ const createNewStory = async (req, res) => {
 
 const getAllStories = async (req, res) => {
   try {
-    const stories = await Story.find();
+    const stories = await Story.find().sort({ createdAt: -1 });
+
     res.status(200).json(stories);
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return res.status(500).send("Internal server error");
   }
 };
