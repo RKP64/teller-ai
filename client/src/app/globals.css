@@ -69,3 +69,6 @@ body {
   background: #000;
   opacity: 0.7;
 }
+.bg-default-300\/50{
+  background-color: unset !important;
+}
