@@ -9,6 +9,7 @@ import { headerSettings } from "@/utils/data";
 import { IScenario, IStory } from "@/interfaces/IStory";
 import { shuffle } from "@/utils/shuffle";
 import { calculateReadingTime } from "@/utils/utils";
+import { IoAdd } from "react-icons/io5";
 
 interface HeaderProps {
   stories: IStory[] | undefined;
@@ -53,9 +54,9 @@ const Header = ({ stories }: HeaderProps) => {
             <div>
               <Link
                 href={"/"}
-                className="text-white border border-solid border-primaryColor p-4 hover:bg-primaryColor duration-300 mt-8"
+                className="text-white font-bold bg-gray-400/80 flex items-center max-w-max rounded-xl shadow-lg shadow-gray-400 p-4 hover:bg-gray-400 duration-300"
               >
-                Generate story
+                <IoAdd className="mr-1 font-bold w-6 h-6" /> Generate story
               </Link>
             </div>
           </div>
