@@ -6,10 +6,12 @@ import { IoReturnUpBackOutline } from "react-icons/io5";
 import { useParams, useRouter } from "next/navigation";
 import { IStory } from "@/interfaces/IStory";
 import StoryAPI from "@/interceptor/Story/Story";
+import { GoMute, GoUnmute } from "react-icons/go";
 
 const StoryPage = () => {
   const [story, setStory] = useState<IStory | undefined>();
   const [currentStep, setCurrentStep] = useState<number>(0);
+  const [soundMuted, setSoundMuted] = useState<boolean>(false);
 
   const router = useRouter();
   const { id } = useParams();
@@ -59,7 +61,28 @@ const StoryPage = () => {
       }}
       className={`crossfade relative`}
     >
+      <audio
+        src={story?.scenarios[currentStep].voice}
+        autoPlay={true}
+        onEnded={handleNextButton}
+        muted={soundMuted}
+      />
+
       <div id="opacity-fade"></div>
+      <div id="opacity-story"></div>
+      <div className="absolute right-10 top-6">
+        {soundMuted ? (
+          <GoMute
+            className="text-white/80 hover:text-white transition duration-500 cursor-pointer w-12 h-12"
+            onClick={() => setSoundMuted(!soundMuted)}
+          />
+        ) : (
+          <GoUnmute
+            className="text-white/80 hover:text-white transition duration-500 cursor-pointer w-12 h-12"
+            onClick={() => setSoundMuted(!soundMuted)}
+          />
+        )}
+      </div>
       <div className="container mx-auto px-8 lg:px-8 relative">
         <div className="w-full h-full flex justify-center items-center flex-col gap-20">
           <div className="mt-16 w-full">
@@ -88,12 +111,14 @@ const StoryPage = () => {
 
           <div className="flex justify-between w-full mb-20">
             <div>
-              <button
-                onClick={handlePreviousButton}
-                className={`rounded-lg text-xl border px-8 py-4 text-gray-400 border-gray-600 hover:border-primaryColor hover:text-primaryColortransition duration-500`}
-              >
-                Previous
-              </button>
+              {currentStep !== 0 && (
+                <button
+                  onClick={handlePreviousButton}
+                  className={`rounded-lg text-xl border px-8 py-4 text-white shadow-md shadow-gray-500 border-gray-500 bg-gray-500 hover:border-primaryColor hover:text-primaryColortransition duration-500`}
+                >
+                  Previous
+                </button>
+              )}
             </div>
             <div>
               <button

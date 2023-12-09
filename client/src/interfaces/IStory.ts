@@ -13,5 +13,6 @@ export interface IStory {
 export interface IScenario {
     text: string;
     image: string;
+    voice:string;
     _id: string;
   };
