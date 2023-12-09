@@ -49,7 +49,7 @@ const Header = ({ stories }: HeaderProps) => {
                 ))}
             </h1>
             <p className="text-gray-400 leading-[1.7] mb-12">
-              {shuffledStories && shuffledStories[0].summary}
+              {shuffledStories && shuffledStories[0].scenarios[0].text}
             </p>
             <div>
               <Link

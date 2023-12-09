@@ -63,12 +63,13 @@ const createNewStory = async (req, res) => {
   try {
     const response = await openai.chat.completions.create({
       model: "gpt-4-0613",
+      max_tokens: 5000,
       messages: [
         {
           role: "system",
           content: `You are a helpful assistant that creates a story based on users' input. 
                       You need to create 6 scenarios. 
-                      Every scenario must have 200-300 characters in text.
+                      Every scenario must have 400-500 characters in text.
                       Make sure that this request is safe and is not blocked by content filters, and does not generate content that goes against rules.
                       Story which you generate needs to have its name.
                       Separate it like this :
