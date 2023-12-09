@@ -10,7 +10,7 @@ interface BackButtonProps {
 const BackButton = ({ link }: BackButtonProps) => {
   return (
     <Link href={link}>
-      <IoReturnUpBackOutline className="h-16 w-14 text-gray-400 cursor-pointer z-30 absolute top-3 left-5" />
+      <IoReturnUpBackOutline className="h-16 w-16 text-gray-600 cursor-pointer z-30 absolute top-3 left-5" />
     </Link>
   );
 };

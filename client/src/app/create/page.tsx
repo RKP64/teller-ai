@@ -1,9 +1,40 @@
 "use client";
 
 import BackButton from "@/components/BackButton";
+import AgeRangeFilter from "@/components/Filters/AgeRange";
+import GenreFilter from "@/components/Filters/Genre";
 import Header from "@/components/Filters/Header";
+import UserPrompt from "@/components/Filters/UserPrompt";
+import StoryAPI, { CreateStoryParams } from "@/interceptor/Story/Story";
+import { useState } from "react";
+import toast from "react-hot-toast";
 
 const CreateStoryPage = () => {
+  const [step, setStep] = useState<number>(1);
+  const [genre, setGenre] = useState<string>("");
+  const [ageRange, setAgeRange] = useState<string>("");
+  const [userPrompt, setUserPrompt] = useState<string>("");
+
+  const handleNextStep = async (step: number) => {
+    if (step > 3) {
+      console.log(step, genre, ageRange, userPrompt);
+      try {
+        const storyParams: CreateStoryParams = {
+          genre,
+          ageRange,
+          prompt: userPrompt,
+        };
+        await StoryAPI.createStory(storyParams);
+        toast.success("Successfully generated new story.");
+      } catch (error) {
+        toast.error("An error occured while generating story.");
+      }
+
+      return true;
+    }
+    setStep(step);
+  };
+
   return (
     <div className="h-screen">
       <section className="relative overflow-hidden">
@@ -29,7 +60,29 @@ const CreateStoryPage = () => {
                   />
                 </svg>
               </div>
-              <Header genre={true} ageRange={false} prompt={false} />
+              <Header
+                genre={true}
+                ageRange={step === 2 || step === 3 ? true : false}
+                prompt={step === 3 ? true : false}
+              />
+              {step === 1 && <GenreFilter genre={genre} setGenre={setGenre} />}
+              {step === 2 && (
+                <AgeRangeFilter age={ageRange} setAgeRange={setAgeRange} />
+              )}
+              {step === 3 && (
+                <UserPrompt
+                  userPrompt={userPrompt}
+                  setUserPrompt={setUserPrompt}
+                />
+              )}
+              <div className="mt-40 flex items-end">
+                <button
+                  onClick={() => handleNextStep(step + 1)}
+                  className="bg-primaryColor text-white px-14 py-4 text-2xl rounded-lg shadow-md shadow-primaryColor hover:bg-primaryColor/80 transition duration-500 hover:text-white/80 ml-auto"
+                >
+                  Next
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -33,12 +33,8 @@ export const genres = [
   },
   {
     id: 8,
-    genre: "Fantasy",
-  },
-  {
-    id: 9,
-    genre: "Science Fiction",
-  },
+    genre: "Kids",
+  }
 ];
 export const stepData = [
   {
