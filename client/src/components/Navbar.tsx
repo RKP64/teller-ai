@@ -56,7 +56,7 @@ export default function BarberMenu() {
       <NavbarContent justify="end">
         <NavbarItem>
           <Link
-            href="#"
+            href="/create"
             className="flex items-center rounded-full border-2 border-solid border-gray-500 px-4 py-2 text-[#fff] text-sm hover:bg-white hover:text-black cursor-pointer transition duration-500"
           >
             <IoAdd className="mr-1" /> Create a story

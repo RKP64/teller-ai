@@ -53,7 +53,7 @@ const Header = ({ stories }: HeaderProps) => {
             </p>
             <div>
               <Link
-                href={"/"}
+                href={"/create"}
                 className="text-white font-bold bg-gray-400/80 flex items-center max-w-max rounded-xl shadow-lg shadow-gray-400 p-4 hover:bg-gray-400 duration-300"
               >
                 <IoAdd className="mr-1 font-bold w-6 h-6" /> Generate story
@@ -135,6 +135,7 @@ const Header = ({ stories }: HeaderProps) => {
                                     alt="story"
                                     width={1000}
                                     height={1000}
+                                    className="cursor-pointer"
                                     style={{
                                       width: "100px",
                                     }}
