@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Pagination } from "@nextui-org/react";
 import { IStory } from "@/interfaces/IStory";
 import useStories from "../hooks/useStory";
+import Link from "next/link";
 
 const StoriesPage = () => {
   const { stories, storiesLoading } = useStories();
@@ -18,9 +19,9 @@ const StoriesPage = () => {
         <div className="grid grid-cols-3 mt-16 gap-8">
           {stories &&
             stories.map((storie: IStory) => (
-              <a
+              <Link
                 key={storie._id}
-                href="/storie/storieID"
+                href={`/story/${storie._id}`}
                 className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
               >
                 <div className="w-full h-64 md:h-auto md:w-full overflow-hidden rounded-t-lg">
@@ -40,7 +41,7 @@ const StoriesPage = () => {
                     {storie.scenarios[0].text}
                   </p>
                 </div>
-              </a>
+              </Link>
             ))}
         </div>
 

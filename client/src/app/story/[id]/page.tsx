@@ -41,7 +41,7 @@ const StoryPage = () => {
 
   const handleNextButton = () => {
     if (story) {
-      if (currentStep >= story?.scenarios.length) return true;
+      if (currentStep >= story?.scenarios.length - 1) return true;
       else {
         setCurrentStep(currentStep + 1);
       }

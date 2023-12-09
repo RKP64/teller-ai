@@ -23,7 +23,11 @@ const Popular = ({ stories }: PopularProps) => {
       </div>
       <Slider {...popularSettings}>
         {stories?.map((data: IStory) => (
-          <Link href="/" aria-label="View Item" key={data._id}>
+          <Link
+            href={`/story/${data._id}`}
+            aria-label="View Item"
+            key={data._id}
+          >
             <div className="relative overflow-hidden transition duration-200 transform rounded shadow-lg hover:-translate-y-2 hover:shadow-2xl m-2">
               <Image
                 src={data.scenarios[0].image}
