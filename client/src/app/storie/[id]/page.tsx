@@ -2,49 +2,66 @@ import React from "react";
 import BackButton from "@/components/BackButton";
 import Link from "next/link";
 import { IoReturnUpBackOutline } from "react-icons/io5";
+import { storyData } from "@/utils/data";
 
 const page = () => {
   return (
-    <section className="container mx-auto px-8 lg:px-8 relative pb-12 h-[100vh]">
-      <div className="w-full h-full flex justify-center items-center flex-col gap-20">
-        <div className="mt-16 w-full">
-          <Link href="/">
-            <IoReturnUpBackOutline className="h-16 w-16 text-gray-600 cursor-pointer z-30" />
-          </Link>
-        </div>
-        <div className="border border-solid border-black">
-          <p className="text-[22px] leading-loose">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae a
-            odio vero veritatis, eos sed, libero amet at magni optio nihil.
-            Animi laborum repudiandae deleniti quod neque quia dicta. Ullam
-            debitis obcaecati tempore eos veniam magnam sunt error, suscipit
-            fugit adipisci dignissimos, dolore maxime aut earum architecto
-            perferendis saepe, expedita qui similique assumenda? Ad possimus
-            sint consectetur sequi a, animi accusantium suscipit. Exercitationem
-            voluptate placeat dolore quos harum illo esse reprehenderit
-            similique quae est, provident quam sunt rem laborum ullam molestiae
-            voluptatum sequi corporis repellendus? Magni est distinctio quo.
-            Deserunt, quos veritatis libero excepturi soluta tenetur dolorem
-            veniam eveniet nulla aliquam ullam velit asperiores, magni quasi
-            ducimus necessitatibus voluptatum ex odio culpa. Animi aliquam
-            sapiente nostrum, exercitationem nisi perspiciatis dicta nemo autem
-            placeat molestias temporibus voluptatem id nihil magni amet deleniti
-            ex qui fugit, similique debitis? Libero adipisci sint iusto tempora
-            est nihil amet soluta vitae eligendi deleniti possimus ipsa ipsum,
-            aspernatur quam sapiente. Ex, exercitationem doloremque tenetur
-            officia doloribus rerum quod! Non corrupti accusantium quas et,
-            repellendus sit rerum minima cum dicta adipisci ipsa commodi
-            repellat saepe temporibus sapiente? Quos ut sed delectus incidunt
-            repellendus tempora reiciendis qui, autem nihil nemo voluptatibus
-            eaque, deserunt, nam recusandae mollitia rem in.
-          </p>
-        </div>
-
-        <div className="flex justify-between">
-          <div>
-            <button className="font-bold text-white">Prev</button>
+    <section
+      style={{
+        backgroundImage: "url('/images/stories/image_a_day_at_the_park.jpg')",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+      }}
+      className="relative">
+      <div id="opacity"></div>
+      <div className="container mx-auto px-8 lg:px-8 relative">
+        <div className="w-full h-full flex justify-center items-center flex-col gap-20">
+          <div className="mt-16 w-full">
+            <Link href="/">
+              <IoReturnUpBackOutline className="h-16 w-16 text-primaryColor cursor-pointer z-30" />
+            </Link>
           </div>
-          <div className="font-bold text-white">Next</div>
+          <div className="w-full">
+            {storyData.map((data, i) => {
+              const length = data.paragraph.length;
+              const midpoint = Math.ceil(length / 2);
+              const firstPart = data.paragraph.slice(0, midpoint);
+              const secondPart =
+                data.paragraph.slice(midpoint).charAt(0).toUpperCase() +
+                data.paragraph.slice(midpoint);
+              return (
+                <div key={i}>
+                  <h2 className="text-5xl font-bold">
+                    {data.title.split(" ")[0]}{" "}
+                    <span className="text-primaryColor">
+                      {data.title.split(" ")[1]}
+                    </span>
+                  </h2>
+
+                  <div className="mt-12 border backdrop-blur-md border-solid border-black p-[33px] rounded-[15px]">
+                    <p className="text-[26px] leading-normal">{firstPart}</p>
+                    <p className="text-[26px] leading-normal mt-4">
+                      {secondPart}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="flex justify-between w-full mb-20">
+            <div>
+              <button
+                className={`rounded-lg text-xl border px-8 py-4 text-gray-400 border-gray-600 hover:border-primaryColor hover:text-primaryColortransition duration-500`}>
+                Previous
+              </button>
+            </div>
+            <div>
+              <button className="bg-primaryColor text-white px-14 py-4 text-2xl rounded-lg shadow-md shadow-primaryColor hover:bg-primaryColor/80 transition duration-500 hover:text-white/80 ml-auto">
+                Next
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>

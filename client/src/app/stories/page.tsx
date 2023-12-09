@@ -40,7 +40,7 @@ const page = () => {
           ))}
         </div>
 
-        <div className="flex flex-wrap gap-4 items-center mt-6 pb-12">
+        <div className="flex flex-wrap gap-4 items-center mt-6 pb-12 justify-center pt-8">
           <Pagination total={10} initialPage={1} color={"success"} />
         </div>
       </section>

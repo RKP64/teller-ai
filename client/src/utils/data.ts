@@ -271,3 +271,11 @@ export const stories = [
     imageUrl: "https://images.pexels.com/photos/1732370/pexels-photo-1732370.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
   },
 ]
+
+export const storyData = [
+  {
+    id :1,
+    title: "Little Heroes",
+    paragraph :"Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore,suscipit voluptatibus. Porro, debitis! Eligendi, vitae voluptates  fuga et explicabo quas quidem tenetur, assumenda commodi esse quam vero, ratione optio blanditiis illum aut. Eligendi quibusdam, quisquam quas optio totam necessitatibus voluptatibus, eveniet magnam quasi maxime reprehenderit. Odio soluta, harum in quaerat deserunt ducimus earum impedit, minus perferendis dolor pariatur voluptas neque excepturi dolorem, suscipit dignissimos quo quae tempore? Repellat aspernatur suscipit illum, natus facilis culpa asperiores consectetur sint a vel alias, voluptates impedit. Labore laborum aut, suscipit culpa expedita porro voluptate earum ab quibusdam velit non optio modi praesentium quae dignissimos."
+  }
+]

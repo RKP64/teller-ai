@@ -25,8 +25,7 @@ const Header = ({ stories }: HeaderProps) => {
         backgroundImage: `url(${
           shuffledStories && shuffledStories[0].scenarios[0].image
         })`,
-      }}
-    >
+      }}>
       <div id="opacity"></div>
       <div className="container mx-auto pt-16 mb-16 px-8 lg:px-8 relative">
         <div className="grid grid-cols-2">
@@ -36,8 +35,7 @@ const Header = ({ stories }: HeaderProps) => {
                 words.map((word: string, index: number) => (
                   <span
                     key={index}
-                    className={index === 1 ? "text-primaryColor" : ""}
-                  >
+                    className={index === 1 ? "text-primaryColor" : ""}>
                     {word}
                     {index !== words.length - 1 && " "}{" "}
                   </span>
@@ -49,13 +47,12 @@ const Header = ({ stories }: HeaderProps) => {
             <div>
               <Link
                 href={"/"}
-                className="text-white border border-solid border-primaryColor p-4 hover:bg-primaryColor duration-300 mt-8"
-              >
+                className="text-white border border-solid border-primaryColor p-4 hover:bg-primaryColor duration-300 mt-8">
                 Generate story
               </Link>
             </div>
           </div>
-          <div className="px-[90px] ml-16 mb-12">
+          <div className="pl-[90px] ml-16 mb-12">
             <Slider {...headerSettings}>
               {headerData.map((data) => {
                 let title = data.title;
@@ -63,9 +60,9 @@ const Header = ({ stories }: HeaderProps) => {
                 let lastWord = words[words.length - 1];
                 return (
                   <div
+                    id="header-item"
                     key={data.id}
-                    className="text-white border border-solid border-gray-400 p-[20px] rounded-lg"
-                  >
+                    className="text-white p-[20px] rounded-lg">
                     <div className="flex flex-col gap-4 mb-6">
                       <h3 className="text-2xl font-bold">
                         {data.title.split(" ")[0]}{" "}
