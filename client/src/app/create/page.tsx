@@ -5,7 +5,9 @@ import AgeRangeFilter from "@/components/Filters/AgeRange";
 import GenreFilter from "@/components/Filters/Genre";
 import Header from "@/components/Filters/Header";
 import UserPrompt from "@/components/Filters/UserPrompt";
+import LoadingPage from "@/components/Loading";
 import StoryAPI, { CreateStoryParams } from "@/interceptor/Story/Story";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
@@ -14,17 +16,23 @@ const CreateStoryPage = () => {
   const [genre, setGenre] = useState<string>("");
   const [ageRange, setAgeRange] = useState<string>("");
   const [userPrompt, setUserPrompt] = useState<string>("");
+  const [loadingState, setLoadingState] = useState<boolean>(false);
+
+  const router = useRouter();
 
   const handleNextStep = async (step: number) => {
     if (step > 3) {
       try {
+        setLoadingState(true);
         const storyParams: CreateStoryParams = {
           genre,
           ageRange,
           prompt: userPrompt,
         };
-        await StoryAPI.createStory(storyParams);
+        const response = await StoryAPI.createStory(storyParams);
+        console.log(response);
         toast.success("Successfully generated new story.");
+        router.push(`/story/${response.data._id}`);
       } catch (error) {
         toast.error("An error occured while generating story.");
       }
@@ -42,7 +50,9 @@ const CreateStoryPage = () => {
 
   return (
     <div>
-      <section className="relative overflow-hidden">
+      <section
+        className={`relative overflow-hidden ${loadingState ? "hidden" : ""}`}
+      >
         <div className="mt-2 md:mt-0 py-12 pb-6 sm:py-16 lg:pb-24 overflow-hidden">
           <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 relative">
             <div className="relative mt-12 lg:mt-20 bg-gray-800 rounded-lg p-10">
@@ -93,13 +103,14 @@ const CreateStoryPage = () => {
                   onClick={() => handleNextStep(step + 1)}
                   className="bg-primaryColor text-white px-14 py-4 text-2xl rounded-lg shadow-md shadow-primaryColor hover:bg-primaryColor/80 transition duration-500 hover:text-white/80 ml-auto"
                 >
-                  Next
+                  {step === 3 ? "Finish" : "Next"}
                 </button>
               </div>
             </div>
           </div>
         </div>
       </section>
+      {loadingState && <LoadingPage />}
     </div>
   );
 };

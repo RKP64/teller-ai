@@ -46,6 +46,10 @@ const { Schema } = mongoose;
  *           type: string
  *           description: The image URL of the scenario.
  *
+ *         voice:
+ *           type: string
+ *           description: The voice URL of the scenario.
+ *
  *       example:
  *         text: Sample scenario text
  *         image: https://example.com/sample-image.jpg
@@ -57,6 +61,10 @@ const scenarioSchema = new mongoose.Schema({
     required: true,
   },
   image: {
+    type: String,
+    required: true,
+  },
+  voice: {
     type: String,
     required: true,
   },

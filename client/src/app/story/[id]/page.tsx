@@ -20,7 +20,6 @@ const StoryPage = () => {
         try {
           const response = await StoryAPI.getStoryById(id);
           setStory(response.data);
-          console.log(response.data);
         } catch (error) {
           router.push("/");
         }
@@ -58,9 +57,9 @@ const StoryPage = () => {
         backgroundRepeat: "no-repeat",
         height: "100vh",
       }}
-      className="relative"
+      className={`crossfade relative`}
     >
-      <div id="opacity"></div>
+      <div id="opacity-fade"></div>
       <div className="container mx-auto px-8 lg:px-8 relative">
         <div className="w-full h-full flex justify-center items-center flex-col gap-20">
           <div className="mt-16 w-full">

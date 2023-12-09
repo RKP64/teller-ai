@@ -51,6 +51,20 @@ const axios = require("axios");
  *               genre: Fiction
  */
 
+async function streamToFile(stream, path) {
+  return new Promise((resolve, reject) => {
+    const writeStream = fs
+      .createWriteStream(path)
+      .on("error", reject)
+      .on("finish", resolve);
+
+    stream.pipe(writeStream).on("error", (error) => {
+      writeStream.close();
+      reject(error);
+    });
+  });
+}
+
 const createNewStory = async (req, res) => {
   const ageRange = req.body.ageRange;
   const prompt = req.body.prompt;
@@ -62,8 +76,8 @@ const createNewStory = async (req, res) => {
 
   try {
     const response = await openai.chat.completions.create({
-      model: "gpt-4-0613",
-      max_tokens: 5000,
+      model: "gpt-4-1106-preview",
+      max_tokens: 1200,
       messages: [
         {
           role: "system",
@@ -161,7 +175,46 @@ const createNewStory = async (req, res) => {
         });
         imageResponse.data.pipe(imageStream);
 
-        scenarios.push({ title, text, image: `/images/stories/${imageName}` });
+        const mp3 = await openai.audio.speech.create({
+          model: "tts-1",
+          voice: "nova",
+          input: text,
+          speed: "1.0",
+        });
+
+        const cleanText = text
+          .replace(/[^\w\s]/gi, "")
+          .replace(/\s+/g, "_")
+          .slice(0, 10);
+        const contentHash = require("crypto")
+          .createHash("md5")
+          .update(text)
+          .digest("hex");
+        const timestamp = new Date().toISOString().replace(/:/g, "_");
+        const voicePath = path.join(
+          __dirname,
+          "..",
+          "..",
+          "client",
+          "public",
+          "voices",
+          "stories",
+          `${cleanText}_${contentHash}_${timestamp}.mp3`
+        );
+
+        console.log(`${cleanText}_${contentHash}_${timestamp}.mp3`);
+
+        await streamToFile(mp3.body, voicePath);
+
+        console.log(mp3.body);
+
+        // console.log(voicePath);
+        scenarios.push({
+          title,
+          text,
+          image: `/images/stories/${imageName}`,
+          voice: `/voices/stories/${cleanText}_${contentHash}_${timestamp}.mp3`,
+        });
       }
     }
 
@@ -178,7 +231,7 @@ const createNewStory = async (req, res) => {
 
     console.log("Saved Story:", savedStory);
 
-    return res.status(201).json(scenarios);
+    return res.status(201).json(savedStory);
   } catch (error) {
     console.error("Error:", error);
     return res.status(500).send("Internal Server Error");
