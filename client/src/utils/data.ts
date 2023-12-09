@@ -1,7 +1,3 @@
-import slika1 from "@/resources/slika1.jpg";
-import slika2 from "@/resources/slika2.jpg";
-import slika3 from "@/resources/slika3.jpg";
-
 export const genres = [
   {
     id: 1,
@@ -97,7 +93,7 @@ export const genresData = [
     paragraph:
       "O for awesome, this chocka full cuzzie is as rip-off as a cracker. Meanwhile, in behind the bicycle shed, Hercules Morse.",
     image:
-      "http://localhost:3000/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fslika1.25ddc98b.jpg&w=3840&q=75",
+      "/images/slika1.jpg",
   },
   {
     id: 2,
@@ -105,7 +101,7 @@ export const genresData = [
     paragraph:
       "O for awesome, this chocka full cuzzie is as rip-off as a cracker. Meanwhile, in behind the bicycle shed, Hercules Morse.",
     image:
-      "http://localhost:3000/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fslika2.e91b214e.jpg&w=3840&q=75",
+      "/images/slika2.jpg"
   },
   {
     id: 3,
@@ -113,7 +109,7 @@ export const genresData = [
     paragraph:
       "O for awesome, this chocka full cuzzie is as rip-off as a cracker. Meanwhile, in behind the bicycle shed, Hercules Morse.",
     image:
-      "http://localhost:3000/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fslika3.be8f8cf7.jpg&w=1920&q=75",
+      "/images/slika3.jpg",
   },
   {
     id: 4,
@@ -121,7 +117,7 @@ export const genresData = [
     paragraph:
       "O for awesome, this chocka full cuzzie is as rip-off as a cracker. Meanwhile, in behind the bicycle shed, Hercules Morse.",
     image:
-      "http://localhost:3000/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fslika3.be8f8cf7.jpg&w=1920&q=75",
+      "/images/slika3.jpg",
   },
 ];
 export const headerSettings = {
@@ -157,15 +153,15 @@ export const headerData = [
     gallery: [
       {
         id: 1,
-        image: slika1,
+        image: "/images/slika1.jpg",
       },
       {
         id: 2,
-        image: slika2,
+        image: "/images/slika2.jpg",
       },
       {
         id: 3,
-        image: slika3,
+        image: "/images/slika3.jpg",
       },
     ],
   },
@@ -180,15 +176,15 @@ export const headerData = [
     gallery: [
       {
         id: 1,
-        image: slika1,
+        image: "/images/slika1.jpg",
       },
       {
         id: 2,
-        image: slika2,
+        image: "/images/slika2.jpg",
       },
       {
         id: 3,
-        image: slika3,
+        image: "/images/slika3.jpg",
       },
     ],
   },
@@ -203,15 +199,15 @@ export const headerData = [
     gallery: [
       {
         id: 1,
-        image: slika1,
+        image: "/images/slika1.jpg",
       },
       {
         id: 2,
-        image: slika2,
+        image: "/images/slika2.jpg",
       },
       {
         id: 3,
-        image: slika3,
+        image: "/images/slika3.jpg",
       },
     ],
   },

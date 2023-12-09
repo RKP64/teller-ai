@@ -5,8 +5,8 @@ import Link from "next/link";
 import Slider from "react-slick";
 import { FaStar } from "react-icons/fa6";
 import Image from "next/image";
-import { headerSettings } from "@/utils/Data";
-import { headerData } from "@/utils/Data";
+import { headerSettings } from "@/utils/data";
+import { headerData } from "@/utils/data";
 
 const Header = () => {
   return (
@@ -28,7 +28,8 @@ const Header = () => {
           <div>
             <Link
               href={"/"}
-              className="text-white border border-solid border-primaryColor p-4 hover:bg-primaryColor duration-300 mt-8">
+              className="text-white border border-solid border-primaryColor p-4 hover:bg-primaryColor duration-300 mt-8"
+            >
               Generate story
             </Link>
           </div>
@@ -42,7 +43,8 @@ const Header = () => {
               return (
                 <div
                   key={data.id}
-                  className="text-white border border-solid border-gray-400 p-[20px] rounded-lg">
+                  className="text-white border border-solid border-gray-400 p-[20px] rounded-lg"
+                >
                   <div className="flex flex-col gap-4 mb-6">
                     <h3 className="text-2xl font-bold">
                       {data.title.split(" ")[0]}{" "}
@@ -79,6 +81,8 @@ const Header = () => {
                             <Image
                               src={gallery.image}
                               alt="story"
+                              width={1000}
+                              height={1000}
                               style={{
                                 width: "100px",
                               }}

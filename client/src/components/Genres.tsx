@@ -1,11 +1,12 @@
 "use client";
 
 import React from "react";
-import { genresData } from "@/utils/Data";
+import { genresData } from "@/utils/data";
 import PageTitle from "@/utils/PageTitle";
 import Slider from "react-slick";
-import { genres } from "@/utils/Data";
-import { genresSettings } from "@/utils/Data";
+import { genres } from "@/utils/data";
+import { genresSettings } from "@/utils/data";
+import Image from "next/image";
 
 const Genres = () => {
   return (
@@ -25,7 +26,8 @@ const Genres = () => {
             {genres.slice(0, 4).map((data, i) => (
               <div
                 key={i}
-                className="border rounded border-solid border-gray-400 px-3 py-2 hover:bg-primaryColor duration-300 text-white cursor-pointer">
+                className="border rounded border-solid border-gray-400 px-3 py-2 hover:bg-primaryColor duration-300 text-white cursor-pointer"
+              >
                 {data.genre}
               </div>
             ))}
@@ -34,7 +36,8 @@ const Genres = () => {
             {genres.slice(4, 7).map((data, i) => (
               <div
                 key={i}
-                className="border rounded border-solid border-gray-400 px-3 py-2 hover:bg-primaryColor duration-300 text-white cursor-pointer">
+                className="border rounded border-solid border-gray-400 px-3 py-2 hover:bg-primaryColor duration-300 text-white cursor-pointer"
+              >
                 {data.genre}
               </div>
             ))}
@@ -43,7 +46,8 @@ const Genres = () => {
             {genres.slice(7).map((data, i) => (
               <div
                 key={i}
-                className="border rounded border-solid border-gray-400 px-3 py-2 hover:bg-primaryColor duration-300 text-white cursor-pointer">
+                className="border rounded border-solid border-gray-400 px-3 py-2 hover:bg-primaryColor duration-300 text-white cursor-pointer"
+              >
                 {data.genre}
               </div>
             ))}
@@ -52,11 +56,13 @@ const Genres = () => {
         <div className="mx-32 mt-[-10rem]">
           <Slider {...genresSettings}>
             {genresData.map((data) => (
-              <div>
-                <img
-                  className="object-cover w-full h-64 mb-6 rounded shadow-lg lg:h-80 xl:h-96"
+              <div key={data.id}>
+                <Image
                   src={data.image}
-                  alt=""
+                  className="object-cover w-full h-64 mb-6 rounded shadow-lg lg:h-80 xl:h-96"
+                  alt={data.title}
+                  height={1000}
+                  width={1000}
                 />
                 <h5 className="mb-2 text-xl text-white font-bold leading-none sm:text-2xl">
                   {data.title}

@@ -17,7 +17,6 @@ const CreateStoryPage = () => {
 
   const handleNextStep = async (step: number) => {
     if (step > 3) {
-      console.log(step, genre, ageRange, userPrompt);
       try {
         const storyParams: CreateStoryParams = {
           genre,
@@ -33,6 +32,12 @@ const CreateStoryPage = () => {
       return true;
     }
     setStep(step);
+  };
+
+  const handlePreviousStep = () => {
+    if (step > 1) {
+      setStep(step - 1);
+    }
   };
 
   return (
@@ -76,6 +81,14 @@ const CreateStoryPage = () => {
                 />
               )}
               <div className="mt-40 flex items-end">
+                {step > 1 && (
+                  <button
+                    onClick={() => handlePreviousStep()}
+                    className="bg-gray-400 text-white px-14 py-4 text-2xl rounded-lg shadow-md shadow-gray-400 hover:bg-primaryColor/80 transition duration-500 hover:text-white/80 mr-4"
+                  >
+                    Previous
+                  </button>
+                )}
                 <button
                   onClick={() => handleNextStep(step + 1)}
                   className="bg-primaryColor text-white px-14 py-4 text-2xl rounded-lg shadow-md shadow-primaryColor hover:bg-primaryColor/80 transition duration-500 hover:text-white/80 ml-auto"

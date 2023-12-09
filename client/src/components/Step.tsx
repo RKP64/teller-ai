@@ -1,5 +1,6 @@
 import React from "react";
-import { stepData } from "@/utils/Data";
+import { stepData } from "@/utils/data";
+import Image from "next/image";
 
 const Step = () => {
   return (
@@ -25,7 +26,8 @@ const Step = () => {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        viewBox="0 0 24 24">
+                        viewBox="0 0 24 24"
+                      >
                         <line
                           fill="none"
                           strokeMiterlimit="10"
@@ -58,7 +60,8 @@ const Step = () => {
                     <svg
                       className="w-6 text-white"
                       stroke="currentColor"
-                      viewBox="0 0 24 24">
+                      viewBox="0 0 24 24"
+                    >
                       <polyline
                         fill="none"
                         strokeWidth="2"
@@ -78,10 +81,12 @@ const Step = () => {
             </div>
           </div>
           <div className="relative">
-            <img
+            <Image
               className="inset-0 object-cover object-bottom w-full rounded shadow-lg h-96 lg:absolute lg:h-full"
               src="https://images.pexels.com/photos/3184287/pexels-photo-3184287.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260"
               alt=""
+              height={1000}
+              width={1000}
             />
           </div>
         </div>
