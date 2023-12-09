@@ -29,9 +29,7 @@ const Popular = ({ stories }: PopularProps) => {
         data-aos-duration="2000"
         data-aos-easing="linear"
       >
-        <h1 className="text-5xl text-primaryColor font-bold underlined">
-          Popular
-        </h1>
+        <h1 className="text-5xl text-primaryColor font-bold">Popular</h1>
         <p className="text-gray-400 max-w-[500px] mb-8 text-[17px] mt-4">
           Browse & discover narratives in demand and embark on a captivating
           storytelling expedition.

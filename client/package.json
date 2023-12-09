@@ -15,6 +15,7 @@
     "aos": "^3.0.0-beta.6",
     "axios": "^1.6.2",
     "framer-motion": "^10.16.16",
+    "howler": "^2.2.4",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
@@ -26,6 +27,7 @@
   },
   "devDependencies": {
     "@types/aos": "^3.0.7",
+    "@types/howler": "^2.2.11",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

@@ -3,6 +3,7 @@ import http from "../http";
 export interface CreateStoryParams {
   ageRange: string;
   prompt: string;
+  narrator:string;
   genre: string;
 }
 
@@ -29,8 +30,8 @@ const StoryAPI = {
     const response = await http.get(`/story${queryParams}`);
     return response;
   },
-  createStory: async ({ ageRange, prompt, genre }: CreateStoryParams) => {
-    const response = await http.post('/story', { ageRange, prompt, genre });
+  createStory: async ({ ageRange, prompt, narrator, genre }: CreateStoryParams) => {
+    const response = await http.post('/story', { ageRange, prompt, narrator, genre });
     return response;
   },
   getStoryById: async (id: string) => {

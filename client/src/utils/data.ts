@@ -33,6 +33,15 @@ export const genres = [
   }
 ];
 
+export const narratorData = [
+  { name: "Allyson", model: "alloy" },
+  { name: "Ethan", model: "echo" },
+  { name: "Faith", model: "fable" },
+  { name: "Owen", model: "onyx" },
+  { name: "Natalie", model: "nova" },
+  { name: "Samantha", model: "shimmer" },
+]; 
+
 export const ageRange = ["1-10","10-15", "15-20","20+"]
 
 export const stepData = [

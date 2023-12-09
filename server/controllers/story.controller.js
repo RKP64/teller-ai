@@ -69,6 +69,7 @@ const createNewStory = async (req, res) => {
   const ageRange = req.body.ageRange;
   const prompt = req.body.prompt;
   const genre = req.body.genre;
+  const narrator = req.body.narrator;
 
   if (!ageRange || !prompt || !genre) {
     return res.status(400).send("Bad request");
@@ -76,7 +77,7 @@ const createNewStory = async (req, res) => {
 
   try {
     const response = await openai.chat.completions.create({
-      model: "gpt-4-1106-preview",
+      model: "gpt-4-0613",
       max_tokens: 1200,
       messages: [
         {
@@ -177,7 +178,7 @@ const createNewStory = async (req, res) => {
 
         const mp3 = await openai.audio.speech.create({
           model: "tts-1",
-          voice: "nova",
+          voice: narrator ? narrator : "nova",
           input: text,
           speed: "1.0",
         });
