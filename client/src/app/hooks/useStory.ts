@@ -11,7 +11,7 @@ const useStories = () => {
             const { data } = await StoryAPI.getAllStories();
             return data;
         }
-    }); 
+    });
 
     return {
         stories,

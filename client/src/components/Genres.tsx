@@ -31,8 +31,7 @@ const Genres = ({ stories }: GenresProps) => {
             {genres.slice(0, 4).map((data, i) => (
               <div
                 key={i}
-                className="border rounded border-solid border-gray-400 px-3 py-2 hover:bg-primaryColor duration-300 text-white cursor-pointer"
-              >
+                className="border rounded border-solid border-gray-400 px-3 py-2 hover:bg-primaryColor duration-300 text-white cursor-pointer">
                 {data.genre}
               </div>
             ))}
@@ -41,8 +40,7 @@ const Genres = ({ stories }: GenresProps) => {
             {genres.slice(4, 7).map((data, i) => (
               <div
                 key={i}
-                className="border rounded border-solid border-gray-400 px-3 py-2 hover:bg-primaryColor duration-300 text-white cursor-pointer"
-              >
+                className="border rounded border-solid border-gray-400 px-3 py-2 hover:bg-primaryColor duration-300 text-white cursor-pointer">
                 {data.genre}
               </div>
             ))}
@@ -51,14 +49,13 @@ const Genres = ({ stories }: GenresProps) => {
             {genres.slice(7).map((data, i) => (
               <div
                 key={i}
-                className="border rounded border-solid border-gray-400 px-3 py-2 hover:bg-primaryColor duration-300 text-white cursor-pointer"
-              >
+                className="border rounded border-solid border-gray-400 px-3 py-2 hover:bg-primaryColor duration-300 text-white cursor-pointer">
                 {data.genre}
               </div>
             ))}
           </div>
         </div>
-        <div className="mx-32 mt-[-10rem]">
+        <div className="ml-32 mt-[-10rem]">
           <Slider {...genresSettings}>
             {stories?.map((data: IStory) => (
               <div key={data._id}>

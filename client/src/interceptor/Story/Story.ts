@@ -32,7 +32,11 @@ const StoryAPI = {
   createStory: async ({ ageRange, prompt, genre }: CreateStoryParams) => {
     const response = await http.post('/story', { ageRange, prompt, genre });
     return response;
-  }
+  },
+  getStoryById: async (id: string) => {
+    const response = await http.get(`/story/${id}`);
+    return response;
+  }, 
 };
 
 export default StoryAPI;

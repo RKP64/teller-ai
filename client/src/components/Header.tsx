@@ -30,8 +30,7 @@ const Header = ({ stories }: HeaderProps) => {
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         width: "100%",
-      }}
-    >
+      }}>
       <div id="opacity"></div>
       <div className="container mx-auto pt-16 mb-16 px-8 lg:px-8 relative">
         <div className="grid grid-cols-2">
@@ -41,8 +40,7 @@ const Header = ({ stories }: HeaderProps) => {
                 words.map((word: string, index: number) => (
                   <span
                     key={index}
-                    className={index === 1 ? "text-primaryColor" : ""}
-                  >
+                    className={index === 1 ? "text-primaryColor" : ""}>
                     {word}
                     {index !== words.length - 1 && " "}{" "}
                   </span>
@@ -54,13 +52,12 @@ const Header = ({ stories }: HeaderProps) => {
             <div>
               <Link
                 href={"/create"}
-                className="text-white font-bold bg-gray-400/80 flex items-center max-w-max rounded-xl shadow-lg shadow-gray-400 p-4 hover:bg-gray-400 duration-300"
-              >
+                className="text-white font-bold bg-gray-400/80 flex items-center max-w-max rounded-xl shadow-lg shadow-gray-400 p-4 hover:bg-gray-400 duration-300">
                 <IoAdd className="mr-1 font-bold w-6 h-6" /> Generate story
               </Link>
             </div>
           </div>
-          <div className="px-[90px] ml-16 mb-12">
+          <div className="pl-[90px] ml-16 mb-12">
             <Slider {...headerSettings}>
               {shuffledStories &&
                 shuffledStories.map((data: IStory) => {
@@ -82,8 +79,8 @@ const Header = ({ stories }: HeaderProps) => {
                   return (
                     <div
                       key={data._id}
-                      className="text-white border border-solid border-gray-400 p-[20px] rounded-lg"
-                    >
+                      id="header-item"
+                      className="text-white border border-solid border-gray-400 p-[20px] rounded-lg">
                       <div className="flex flex-col gap-4 mb-6">
                         <h3 className="text-2xl font-bold">
                           {words &&
@@ -92,8 +89,7 @@ const Header = ({ stories }: HeaderProps) => {
                                 key={index}
                                 className={
                                   index === 1 ? "text-primaryColor" : ""
-                                }
-                              >
+                                }>
                                 {word}
                                 {index !== words.length - 1 && " "}{" "}
                               </span>

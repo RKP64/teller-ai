@@ -19,6 +19,18 @@ body {
   top: 0.5rem !important;
 }
 
+#opacity-fade {
+  background-color: white;
+  transition: opacity 0.5s ease-out;
+}
+
+.crossfade {
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  transition: background-image 0.5s ease-out;
+}
+
 *::-webkit-scrollbar {
   width: 6px;
   width: 6px;
@@ -69,6 +81,13 @@ body {
   background: #000;
   opacity: 0.7;
 }
+<<<<<<< HEAD
 .bg-default-300\/50{
   background-color: unset !important;
 }
+=======
+#header-item {
+  backdrop-filter: blur(15px);
+  background: rgb(0 30 43 / 40%);
+}
+>>>>>>> 1f6a23106f2ab5bb141e8f87d72373f3acbff8ff
