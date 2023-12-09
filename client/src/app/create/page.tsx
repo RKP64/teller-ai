@@ -7,6 +7,7 @@ import Header from "@/components/Filters/Header";
 import UserPrompt from "@/components/Filters/UserPrompt";
 import LoadingPage from "@/components/Loading";
 import StoryAPI, { CreateStoryParams } from "@/interceptor/Story/Story";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
@@ -17,6 +18,8 @@ const CreateStoryPage = () => {
   const [userPrompt, setUserPrompt] = useState<string>("");
   const [loadingState, setLoadingState] = useState<boolean>(false);
 
+  const router = useRouter();
+
   const handleNextStep = async (step: number) => {
     if (step > 3) {
       try {
@@ -26,8 +29,10 @@ const CreateStoryPage = () => {
           ageRange,
           prompt: userPrompt,
         };
-        await StoryAPI.createStory(storyParams);
+        const response = await StoryAPI.createStory(storyParams);
+        console.log(response);
         toast.success("Successfully generated new story.");
+        router.push(`/story/${response.data._id}`);
       } catch (error) {
         toast.error("An error occured while generating story.");
       }

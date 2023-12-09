@@ -231,7 +231,7 @@ const createNewStory = async (req, res) => {
 
     console.log("Saved Story:", savedStory);
 
-    return res.status(201).json(scenarios);
+    return res.status(201).json(savedStory);
   } catch (error) {
     console.error("Error:", error);
     return res.status(500).send("Internal Server Error");
